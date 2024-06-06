@@ -94,5 +94,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Common\" />
+    <Folder Include="Image\Downloads\" />
+    <Folder Include="Model\" />
+    <Folder Include="Pages\Delivery\Items\" />
+    <Folder Include="Pages\Login\" />
+    <Folder Include="Pages\Messages\Items\" />
+    <Folder Include="Pages\ObjectDelivery\Items\" />
+    <Folder Include="Pages\Users\Items\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
