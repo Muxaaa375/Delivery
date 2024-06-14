@@ -9,7 +9,7 @@ namespace Delivery_Паксюаткин
         public MainWindow()
         {
             InitializeComponent();
-            OpenPage(new Pages.Login.Main());
+            OpenPage(new Pages.LoginRegister.Main());
             init = this;
         }
 
