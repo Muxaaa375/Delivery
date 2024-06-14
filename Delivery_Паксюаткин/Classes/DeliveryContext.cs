@@ -1,0 +1,87 @@
+﻿using Delivery_Паксюаткин.Classes.Common;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+
+namespace Delivery_Паксюаткин.Classes
+{
+    public class DeliveryContext : Model.Delivery
+    {
+        public DeliveryContext(int Id, int UserId, int DeliveryId, int IdObject, string FromAddress, string Status, string Commit, DateTime Date)
+            : base(Id, UserId, DeliveryId, IdObject, FromAddress, Status, Commit, Date) { }
+
+        public static List<DeliveryContext> Select()
+        {
+            List<DeliveryContext> AllDelivery = new List<DeliveryContext>();
+            string SQL = "SELECT * FROM `delivery`";
+            MySqlConnection connection = Connection.OpenConnection();
+            MySqlDataReader Data = Connection.Query(SQL, connection);
+            while (Data.Read())
+            {
+                AllDelivery.Add(new DeliveryContext(
+                    Data.GetInt32(0),
+                    Data.GetInt32(1),
+                    Data.GetInt32(2),
+                    Data.GetInt32(3),
+                    Data.GetString(4),
+                    Data.GetString(5),
+                    Data.GetString(6),
+                    Data.GetDateTime(7)
+               ));
+            }
+            Connection.CloseConnection(connection);
+            return AllDelivery;
+        }
+
+        public void Add()
+        {
+            string SQL = "INSERT INTO " +
+                            "`delivery`(" +
+                                "`UserId`, " +
+                                "`DeliveryId`, " +
+                                "`IdObject`, " +
+                                "`FromAddress`, " +
+                                "`Status`, " +
+                                "`Commit`, " +
+                                "`Date`) " +
+                           "VALUES (" +
+                                $"'{this.UserId}', " +
+                                $"'{this.DeliveryId}', " +
+                                $"'{this.IdObject}', " +
+                                $"'{this.FromAddress}', " +
+                                $"'{this.Status}', " +
+                                $"'{this.Commit}', " +
+                                $"'{this.Date.ToString("yyyy-MM-dd HH:mm:ss")}')";
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query(SQL, connection);
+            Connection.CloseConnection(connection);
+        }
+
+        public void Update()
+        {
+            string SQL = "UPDATE " +
+                            "`delivery` " +
+                         "SET " +
+                            $"`UserId`='{this.UserId}', " +
+                            $"`DeliveryId`='{this.DeliveryId}', " +
+                            $"`IdObject`='{this.IdObject}', " +
+                            $"`FromAddress`='{this.FromAddress}', " +
+                            $"`Status`='{this.Status}', " +
+                            $"`Commit`='{this.Commit}', " +
+                            $"`Date`='{this.Date.ToString("yyyy-MM-dd HH:mm:ss")}' " +
+                         "WHERE " +
+                            $"`Id`='{this.Id}'";
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query(SQL, connection);
+            Connection.CloseConnection(connection);
+        }
+
+        public void Delete()
+        {
+            string SQL = $"DELETE FROM `delivery` WHERE `Id` = '{this.Id}'";
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query(SQL, connection);
+            Connection.CloseConnection(connection);
+        }
+    }
+}

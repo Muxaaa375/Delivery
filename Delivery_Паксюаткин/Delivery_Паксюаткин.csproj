@@ -116,6 +116,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Common\Connection.cs" />
+    <Compile Include="Classes\DeliveryContext.cs" />
+    <Compile Include="Classes\LoginnContext.cs" />
+    <Compile Include="Classes\MessagesContext.cs" />
+    <Compile Include="Classes\ObjectDeliveryContext.cs" />
+    <Compile Include="Classes\RolesContext.cs" />
+    <Compile Include="Classes\UsersContext.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
