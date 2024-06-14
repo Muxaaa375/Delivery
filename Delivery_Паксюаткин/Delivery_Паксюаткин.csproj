@@ -122,6 +122,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Delivery.cs" />
+    <Compile Include="Model\Loginn.cs" />
+    <Compile Include="Model\Messages.cs" />
+    <Compile Include="Model\ObjectDelivery.cs" />
+    <Compile Include="Model\Roles.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,7 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\Downloads\" />
-    <Folder Include="Model\" />
     <Folder Include="Pages\Delivery\Items\" />
     <Folder Include="Pages\Login\" />
     <Folder Include="Pages\Messages\Items\" />
