@@ -126,6 +126,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PagesCourier\Delivery\Items\Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesCourier\Delivery\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Delivery\Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +198,12 @@
     <Compile Include="Model\ObjectDelivery.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="PagesCourier\Delivery\Items\Item.xaml.cs">
+      <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\Delivery\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Delivery\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
@@ -258,7 +272,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="PagesCourier\DeliveryOj\Items\" />
+    <Folder Include="PagesCourier\ObjectDelivery\Items\" />
+    <Folder Include="PagesUser\Delivery\Items\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\icon-korobka.png" />
     <Resource Include="Image\icon.png" />
