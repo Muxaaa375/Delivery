@@ -130,6 +130,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ObjectDelivery\Add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ObjectDelivery\Items\Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ObjectDelivery\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Users\Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +163,15 @@
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="Pages\LoginRegister\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ObjectDelivery\Add.xaml.cs">
+      <DependentUpon>Add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ObjectDelivery\Items\Item.xaml.cs">
+      <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ObjectDelivery\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Users\Add.xaml.cs">
@@ -192,7 +213,6 @@
     <Folder Include="Image\Downloads\" />
     <Folder Include="Pages\Delivery\Items\" />
     <Folder Include="Pages\Messages\Items\" />
-    <Folder Include="Pages\ObjectDelivery\Items\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\icon-korobka.png" />
