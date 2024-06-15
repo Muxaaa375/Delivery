@@ -126,11 +126,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PagesCourier\DeliveryOj\Items\Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesCourier\DeliveryOj\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesCourier\Delivery\Items\Item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagesCourier\Delivery\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesCourier\ObjectDelivery\Add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesCourier\ObjectDelivery\Items\Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesCourier\ObjectDelivery\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,10 +218,25 @@
     <Compile Include="Model\ObjectDelivery.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="PagesCourier\DeliveryOj\Items\Item.xaml.cs">
+      <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\DeliveryOj\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PagesCourier\Delivery\Items\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
     <Compile Include="PagesCourier\Delivery\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\ObjectDelivery\Add.xaml.cs">
+      <DependentUpon>Add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\ObjectDelivery\Items\Item.xaml.cs">
+      <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\ObjectDelivery\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Delivery\Add.xaml.cs">
@@ -273,8 +308,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PagesCourier\DeliveryOj\Items\" />
-    <Folder Include="PagesCourier\ObjectDelivery\Items\" />
     <Folder Include="PagesUser\Delivery\Items\" />
   </ItemGroup>
   <ItemGroup>
