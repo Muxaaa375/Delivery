@@ -7,8 +7,8 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class DeliveryContext : Model.Delivery
     {
-        public DeliveryContext(int Id, int UserId, int DeliveryId, int IdObject, string FromAddress, string Status, string Commit, DateTime Date)
-            : base(Id, UserId, DeliveryId, IdObject, FromAddress, Status, Commit, Date) { }
+        public DeliveryContext(int Id, int UserId, int DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
+            : base(Id, UserId, DeliveryId, IdObject, FromAddress, Status, Commit, Price, Date) { }
 
         public static List<DeliveryContext> Select()
         {
@@ -26,7 +26,8 @@ namespace Delivery_Паксюаткин.Classes
                     Data.GetString(4),
                     Data.GetString(5),
                     Data.GetString(6),
-                    Data.GetDateTime(7)
+                    Data.GetInt32(7),
+                    Data.GetDateTime(8)
                ));
             }
             Connection.CloseConnection(connection);
@@ -43,6 +44,7 @@ namespace Delivery_Паксюаткин.Classes
                                 "`FromAddress`, " +
                                 "`Status`, " +
                                 "`Commit`, " +
+                                "`Price`, " +
                                 "`Date`) " +
                            "VALUES (" +
                                 $"'{this.UserId}', " +
@@ -51,6 +53,7 @@ namespace Delivery_Паксюаткин.Classes
                                 $"'{this.FromAddress}', " +
                                 $"'{this.Status}', " +
                                 $"'{this.Commit}', " +
+                                $"'{this.Price}', " +
                                 $"'{this.Date.ToString("yyyy-MM-dd HH:mm:ss")}')";
             MySqlConnection connection = Connection.OpenConnection();
             Connection.Query(SQL, connection);
@@ -68,6 +71,7 @@ namespace Delivery_Паксюаткин.Classes
                             $"`FromAddress`='{this.FromAddress}', " +
                             $"`Status`='{this.Status}', " +
                             $"`Commit`='{this.Commit}', " +
+                            $"`Price`='{this.Price}', " +
                             $"`Date`='{this.Date.ToString("yyyy-MM-dd HH:mm:ss")}' " +
                          "WHERE " +
                             $"`Id`='{this.Id}'";

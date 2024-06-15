@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Delivery_Паксюаткин.Pages.Delivery.Items.Item"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Delivery_Паксюаткин.Pages.Delivery.Items"
+                      mc:Ignorable="d">
+    <Grid Background="#FFE2E2E2">
+        <Grid Margin="10" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100px"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Width="80" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Source="/Image/icon-korobka.png"/>
+            <Button Click="EditRecord" Content="Изменить" Height="25" Margin="10,141,10,0" HorizontalAlignment="Center" Width="80" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
+            <Button Click="DeleteRecord" Content="Удалить" Height="25" Margin="10,171,10,0" HorizontalAlignment="Center" Width="80" Background="#FFE64718" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
+            <Label Content="Адрес отправки:" Grid.Column="2" VerticalAlignment="Top" Margin="11,11,10,0"/>
+            <TextBox x:Name="fromAddress" Height="25" Margin="12,37,9,0" VerticalAlignment="Top" Grid.Column="2" IsEnabled="False"/>
+            <Label Content="Статус: *" Grid.Column="1" VerticalAlignment="Top" Margin="16,11,16,0"/>
+            <TextBox x:Name="status" Height="25" Grid.Column="1" Margin="16,37,16,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <Label Content="Заказчик: *" Grid.Column="1" VerticalAlignment="Top" Margin="16,63,16,0"/>
+            <TextBox x:Name="userId" Height="26" Grid.Column="1" Margin="16,89,16,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <Label Content="Курьер: *" Grid.Column="1" VerticalAlignment="Top" Margin="16,115,16,0"/>
+            <TextBox x:Name="deliveryId" Height="26" Grid.Column="1" Margin="16,141,16,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <Label Content="Комментарий:" Grid.Column="3" VerticalAlignment="Top" Margin="9,11,10,0"/>
+            <TextBox x:Name="commit" Grid.Column="3" Margin="10,37,10,0" Height="76" VerticalAlignment="Top" IsEnabled="False"/>
+            <Label Content="Дата создания:" Grid.Column="2" VerticalAlignment="Top" Margin="12,63,10,0"/>
+            <TextBox x:Name="date" Grid.Column="2" Margin="12,89,10,10" Height="25" VerticalAlignment="Top" IsReadOnly="True" IsEnabled="False"/>
+            <Label Content="Объект доставки: *" Grid.Column="2" VerticalAlignment="Top" Margin="12,115,10,10"/>
+            <TextBox x:Name="objectId" Height="26" Grid.Column="2" Margin="11,141,10,10" VerticalAlignment="Top" IsEnabled="False"/>
+            <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="10,172,10,10" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" FontSize="10" />
+            <Label Content="Стоимость:" Grid.Column="3" VerticalAlignment="Top" Margin="10,115,10,0"/>
+            <TextBox x:Name="price" Height="26" Grid.Column="3" Margin="9,141,10,0" VerticalAlignment="Top" IsEnabled="False"/>
+        </Grid>
+    </Grid>
+</UserControl>
