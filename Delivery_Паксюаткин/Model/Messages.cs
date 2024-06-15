@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Delivery_Паксюаткин.Classes.Common;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,13 @@ namespace Delivery_Паксюаткин.Model
             MessageText = messageText;
             ImagePath = imagePath;
             DateTime = dateTime;
+        }
+        public void Delete()
+        {
+            string SQL = $"DELETE FROM `messages` WHERE `Id` = {this.Id}";
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query(SQL, connection);
+            Connection.CloseConnection(connection);
         }
     }
 }

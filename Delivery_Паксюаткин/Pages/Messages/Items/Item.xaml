@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Delivery_Паксюаткин.Pages.Messages.Items.Item"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Delivery_Паксюаткин.Pages.Messages.Items"
+                      mc:Ignorable="d">
+    <Grid Background="#FFE2E2E2">
+        <Grid Margin="10" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55px"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="{Binding MessageText}" TextWrapping="Wrap" FontWeight="Bold" />
+                <TextBlock Text="{Binding DateTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" TextWrapping="Wrap" />
+            </StackPanel>
+            <Button Grid.Column="2" Width="65" Height="34" Content="Перейти" HorizontalAlignment="Center" VerticalAlignment="Center" Click="GoToMessage_Click" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" Margin="175,10,10,10"/>
+            <Image Width="34" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,10,10" Source="/Image/icon-message.png"/>
+            <Button Grid.Column="2" Width="85" Height="34" Content="Удалить чат" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DeleteToMessage_Click" Background="#FFE61818" BorderBrush="Red" Foreground="White" Margin="85,10,80,10"/>
+        </Grid>
+    </Grid>
+</UserControl>
