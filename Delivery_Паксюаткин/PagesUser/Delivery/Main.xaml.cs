@@ -19,14 +19,35 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
     public partial class Main : Page
     {
         List<DeliveryContext> AllDelivery = DeliveryContext.Select();
+
+        private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
         public Main()
         {
             InitializeComponent();
+            loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
+            DisplayLoggedInUserLogin();
+            LoadInitialData();
+        }
+
+        private void LoadInitialData()
+        {
             foreach (DeliveryContext item in AllDelivery)
             {
                 parent.Children.Add(new Items.Item(item, null, this));
             }
         }
+
+        private void DisplayLoggedInUserLogin()
+        {
+            if (loggedInUser != null)
+            {
+                login.Text = loggedInUser.Login; // Отображаем логин текущего пользователя
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не вошел в систему.");
+            }
+        }       
 
 
         private void AddRecord(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new PagesUser.Delivery.Add());

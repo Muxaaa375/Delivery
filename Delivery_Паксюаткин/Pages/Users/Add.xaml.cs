@@ -35,6 +35,8 @@ namespace Delivery_Паксюаткин.Pages.Users
                 phoneNumber.Text = userContext.PhoneNumber;
                 address.Text = userContext.Address;
                 role.SelectedIndex = AllRoles.FindIndex(x => x.Id == userContext.IdRole);
+                login.Text = userContext.Login;
+                pwd.Text = userContext.Password;
                 bthAdd.Content = "Изменить";
 
                 // Абсолютный путь для загрузки изображения
@@ -127,7 +129,9 @@ namespace Delivery_Паксюаткин.Pages.Users
                     imagePath,
                     phoneNumber.Text,
                     address.Text,
-                    AllRoles.Find(x => x.Role == role.SelectedItem).Id
+                    AllRoles.Find(x => x.Role == role.SelectedItem).Id,
+                    login.Text,
+                    pwd.Text
                 );
                 newUser.Add();
                 MessageBox.Show("Запись успешно добавлена.");
@@ -140,7 +144,9 @@ namespace Delivery_Паксюаткин.Pages.Users
                     imagePath,
                     phoneNumber.Text,
                     address.Text,
-                    AllRoles.Find(x => x.Role == role.SelectedItem).Id
+                    AllRoles.Find(x => x.Role == role.SelectedItem).Id,
+                    login.Text,
+                    pwd.Text
                 );
                 userContext.Update();
                 MessageBox.Show("Запись успешно обновлена.");

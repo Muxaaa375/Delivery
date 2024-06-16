@@ -18,6 +18,8 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
 {
     public partial class Main : Page
     {
+        public static UsersContext LoggedInUser { get; private set; }
+
         public Main()
         {
             InitializeComponent();
@@ -25,21 +27,40 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
 
         private void OpenLogin(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(login.Text))
+            string inputLogin = login.Text;
+            string inputPassword = pwd.Password;
+
+            // Проверка логина и пароля (примерный код)
+            UsersContext user = ValidateUser(inputLogin, inputPassword); // Ваш метод проверки пользователя
+
+
+            if (string.IsNullOrWhiteSpace(inputLogin))
             {
-                MessageBox.Show("Необходимо прописать Логин");
+                MessageBox.Show("Необходимо указать логин");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(pwd.Text))
+            if (string.IsNullOrWhiteSpace(inputPassword))
             {
-                MessageBox.Show("Необходимо прописать Пароль");
+                MessageBox.Show("Необходимо указать пароль");
                 return;
             }
 
-            var userRole = AuthenticateUser(login.Text, pwd.Text);
-            if (!string.IsNullOrEmpty(userRole))
+            if (user != null)
             {
-                NavigateToRolePage(userRole);
+                App.CurrentUser = user;
+                MessageBox.Show("Успешный вход");
+
+                // Определение пути в зависимости от роли пользователя
+                string pagePath = DeterminePagePath(user.IdRole);
+                if (!string.IsNullOrEmpty(pagePath))
+                {
+                    // Перенаправление на указанную страницу
+                    NavigationService.Navigate(new Uri(pagePath, UriKind.Relative));
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось определить страницу для роли пользователя.");
+                }
             }
             else
             {
@@ -47,36 +68,39 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
             }
         }
 
-        private string AuthenticateUser(string login, string password)
+        private UsersContext ValidateUser(string login, string password)
         {
-            List<LoginnContext> logins = LoginnContext.Select();
-            foreach (var user in logins)
+            List<UsersContext> allUsers = UsersContext.Select();
+
+            foreach (UsersContext user in allUsers)
             {
                 if (user.Login == login && user.Password == password)
                 {
-                    return user.Role;
+                    return user;
                 }
             }
+
             return null;
         }
 
-        private void NavigateToRolePage(string role)
+        private string DeterminePagePath(int roleId)
         {
-            switch (role)
+            switch (roleId)
             {
-                case "Курьер":
-                    MainWindow.init.OpenPage(new PagesCourier.Delivery.Main());
-                    break;
-                case "Пользователь":
-                    MainWindow.init.OpenPage(new PagesUser.Delivery.Main());
-                    break;
-                case "Админ":
-                    MainWindow.init.OpenPage(new Pages.Users.Main());
-                    break;
+                case 1: // Администратор
+                    return "/Pages/Users/Main.xaml";
+                case 2: // Пользователь
+                    return "/PagesUser/Delivery/Main.xaml";
+                case 3: // Курьер
+                    return "/PagesCourier/Delivery/Main.xaml";
                 default:
-                    MessageBox.Show("Неизвестная роль пользователя");
-                    break;
+                    return null;
             }
+        }
+
+        private void OpenRegister(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/LoginRegister/Register.xaml", UriKind.Relative));
         }
     }
 }

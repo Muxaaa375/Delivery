@@ -17,5 +17,6 @@
 
             </StackPanel>
         </ScrollViewer>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Margin="587,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" IsEnabled="False"/>
     </Grid>
 </Page>

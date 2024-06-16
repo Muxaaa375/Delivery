@@ -7,7 +7,8 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class UsersContext : Users
     {
-        public UsersContext(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole) : base(Id, FIO, Image, PhoneNumber, Address, IdRole) { }
+        public UsersContext(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
+            : base(Id, FIO, Image, PhoneNumber, Address, IdRole, Login, Password) { }
 
         public static List<UsersContext> Select()
         {
@@ -20,10 +21,12 @@ namespace Delivery_Паксюаткин.Classes
                 AllUsers.Add(new UsersContext(
                     Data.GetInt32(0),
                     Data.GetString(1),
-                    Data.GetString(2),
+                    Data.IsDBNull(2) ? null : Data.GetString(2),
                     Data.GetString(3),
-                    Data.GetString(4),
-                    Data.GetInt32(5)
+                    Data.IsDBNull(4) ? null : Data.GetString(4),
+                    Data.GetInt32(5),
+                    Data.GetString(6),
+                    Data.GetString(7)
                ));
             }
             Connection.CloseConnection(connection);
@@ -38,13 +41,17 @@ namespace Delivery_Паксюаткин.Classes
                                 "`Image`, " +
                                 "`PhoneNumber`, " +
                                 "`Address`, " +
-                                "`IdRole`) " +
+                                "`IdRole`, " +
+                                "`Login`, " +
+                                "`Password`) " +
                            "VALUES (" +
                                 $"'{this.FIO}', " +
                                 $"'{this.Image}', " +
                                 $"'{this.PhoneNumber}', " +
                                 $"'{this.Address}', " +
-                                $"'{this.IdRole}')";
+                                $"'{this.IdRole}', " +
+                                $"'{this.Login}', " +
+                                $"'{this.Password}')";
             MySqlConnection connection = Connection.OpenConnection();
             Connection.Query(SQL, connection);
             Connection.CloseConnection(connection);

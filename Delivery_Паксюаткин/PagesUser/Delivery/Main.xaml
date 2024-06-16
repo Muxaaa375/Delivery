@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
         Title="Main" MinHeight="490" MinWidth="820" MaxHeight="490" MaxWidth="820">
     <Grid Margin="0" Background="White">
-        <Button Click="AddRecord" Content="Оформить заказ" Height="25" Margin="577,10,0,0" HorizontalAlignment="Left" Width="130" Background="#FF36DC26" BorderBrush="#FF16FF00" Foreground="White" VerticalAlignment="Top"/>
+        <Button Click="AddRecord" Content="Оформить заказ" Height="25" Margin="452,10,0,0" HorizontalAlignment="Left" Width="130" Background="#FF36DC26" BorderBrush="#FF16FF00" Foreground="White" VerticalAlignment="Top"/>
         <Button Click="Exit" Content="Выйти" Height="25" Margin="712,10,0,0" HorizontalAlignment="Left" Width="78" Background="#FFDC2626" BorderBrush="Black" Foreground="White" VerticalAlignment="Top"/>
         <ScrollViewer Margin="0,40,18,0">
             <StackPanel x:Name="parent">
@@ -15,5 +15,6 @@
             </StackPanel>
         </ScrollViewer>
         <Label Content="История заказов" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="152" FontSize="16" FontWeight="Bold" FontFamily="Tw Cen MT Condensed Extra Bold" Height="27"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Margin="587,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" IsEnabled="False"/>
     </Grid>
 </Page>

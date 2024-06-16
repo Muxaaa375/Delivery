@@ -14,7 +14,10 @@ namespace Delivery_Паксюаткин.Model
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int IdRole { get; set; }
-        public Users(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole)
+        public string Login { get; set; }
+        public string Password { get; set; }
+
+        public Users(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
         {
             this.Id = Id;
             this.FIO = FIO;
@@ -22,6 +25,8 @@ namespace Delivery_Паксюаткин.Model
             this.PhoneNumber = PhoneNumber;
             this.Address = Address;
             this.IdRole = IdRole;
+            this.Login = Login;
+            this.Password = Password;
         }
     }
 }

@@ -117,7 +117,6 @@
     </Compile>
     <Compile Include="Classes\Common\Connection.cs" />
     <Compile Include="Classes\DeliveryContext.cs" />
-    <Compile Include="Classes\LoginnContext.cs" />
     <Compile Include="Classes\MessagesContext.cs" />
     <Compile Include="Classes\ObjectDeliveryContext.cs" />
     <Compile Include="Classes\RolesContext.cs" />
@@ -190,6 +189,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LoginRegister\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Messages\Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,7 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Delivery.cs" />
-    <Compile Include="Model\Loginn.cs" />
     <Compile Include="Model\Messages.cs" />
     <Compile Include="Model\ObjectDelivery.cs" />
     <Compile Include="Model\Roles.cs" />
@@ -285,6 +287,9 @@
     </Compile>
     <Compile Include="Pages\LoginRegister\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginRegister\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Messages\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>

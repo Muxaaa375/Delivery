@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Delivery_Паксюаткин.Classes;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,8 @@ namespace Delivery_Паксюаткин
     /// </summary>
     public partial class App : Application
     {
+        public static UsersContext CurrentUser { get; set; }
+
+        
     }
 }

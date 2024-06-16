@@ -34,7 +34,11 @@
             <TextBox x:Name="phoneNumber" Height="26" Grid.Column="1" Margin="10,220,10,0" VerticalAlignment="Top"/>
             <Button Click="Exit" Content="Назад" Height="25" Grid.Column="2" Margin="0,164,115,0" HorizontalAlignment="Right" Width="100" Background="#FFE63418" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
             <TextBlock x:Name="imagePathText" Height="25" Grid.Column="1" Margin="10,164,10,0" VerticalAlignment="Top"/>
-            <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="10,244,10,0" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" />
+            <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="10,361,10,0" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" />
+            <Label Content="Логин: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,249,10,0"/>
+            <TextBox x:Name="login" Height="26" Grid.Column="1" Margin="10,275,10,0" VerticalAlignment="Top"/>
+            <Label Content="Пароль: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,304,10,0"/>
+            <TextBox x:Name="pwd" Height="26" Grid.Column="1" Margin="10,330,10,0" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>
