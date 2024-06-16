@@ -1,13 +1,13 @@
 ﻿using Delivery_Паксюаткин.Classes.Common;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace Delivery_Паксюаткин.Classes
 {
     public class DeliveryContext : Model.Delivery
     {
-        public DeliveryContext(int Id, int UserId, int DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
+        public DeliveryContext(int Id, int UserId, int? DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
             : base(Id, UserId, DeliveryId, IdObject, FromAddress, Status, Commit, Price, Date) { }
 
         public static List<DeliveryContext> Select()
@@ -21,7 +21,7 @@ namespace Delivery_Паксюаткин.Classes
                 AllDelivery.Add(new DeliveryContext(
                     Data.GetInt32(0),
                     Data.GetInt32(1),
-                    Data.GetInt32(2),
+                    Data.IsDBNull(2) ? (int?)null : Data.GetInt32(2), // Проверка на null
                     Data.GetInt32(3),
                     Data.GetString(4),
                     Data.GetString(5),
@@ -48,7 +48,7 @@ namespace Delivery_Паксюаткин.Classes
                                 "`Date`) " +
                            "VALUES (" +
                                 $"'{this.UserId}', " +
-                                $"'{this.DeliveryId}', " +
+                                (this.DeliveryId.HasValue ? $"'{this.DeliveryId.Value}'" : "NULL") + ", " +
                                 $"'{this.IdObject}', " +
                                 $"'{this.FromAddress}', " +
                                 $"'{this.Status}', " +
@@ -66,7 +66,7 @@ namespace Delivery_Паксюаткин.Classes
                             "`delivery` " +
                          "SET " +
                             $"`UserId`='{this.UserId}', " +
-                            $"`DeliveryId`='{this.DeliveryId}', " +
+                            $"`DeliveryId`={(this.DeliveryId.HasValue ? $"'{this.DeliveryId.Value}'" : "NULL")}, " +
                             $"`IdObject`='{this.IdObject}', " +
                             $"`FromAddress`='{this.FromAddress}', " +
                             $"`Status`='{this.Status}', " +

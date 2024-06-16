@@ -10,7 +10,7 @@ namespace Delivery_Паксюаткин.Model
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int DeliveryId { get; set; }
+        public int? DeliveryId { get; set; }
         public int IdObject { get; set; }
         public string FromAddress { get; set; }
         public string Status { get; set; }
@@ -18,7 +18,7 @@ namespace Delivery_Паксюаткин.Model
         public int Price { get; set; }
         public DateTime Date { get; set; }
 
-        public Delivery(int Id, int UserId, int DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
+        public Delivery(int Id, int UserId, int? DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
         {
             this.Id = Id;
             this.UserId = UserId;

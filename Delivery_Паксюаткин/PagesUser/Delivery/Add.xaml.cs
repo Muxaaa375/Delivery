@@ -2,17 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Delivery_Паксюаткин.PagesUser.Delivery
 {
@@ -20,62 +11,64 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
     {
         List<DeliveryContext> AllDelivery = DeliveryContext.Select();
         List<UsersContext> AllUsers = UsersContext.Select();
-        List<ObjectDeliveryContext> AllObjects = ObjectDeliveryContext.Select(); 
-        private DeliveryContext delivery; 
+        List<ObjectDeliveryContext> AllObjects = ObjectDeliveryContext.Select();
+        private DeliveryContext delivery;
+        private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
 
         public Add(DeliveryContext delivery = null)
         {
             InitializeComponent();
-
-            foreach (var item in AllUsers)
-            {
-                if (item.IdRole == 1)
-                    deliveryId.Items.Add(item.FIO);
-                else if (item.IdRole == 2)
-                    userId.Items.Add(item.FIO);
-            }
+            loggedInUser = App.CurrentUser;
 
             foreach (var obj in AllObjects)
             {
                 objectId.Items.Add(obj.Commit);
             }
 
-            status.Items.Add("Ожидает доставки");
-            status.Items.Add("У курьера");
-            status.Items.Add("Доставлено");
-
+            status.Text = "Ожидает доставки";
             date.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+
+            if (loggedInUser != null)
+            {
+                userId.Text = loggedInUser.FIO;
+                userId.IsReadOnly = true;
+            }
 
             if (delivery != null)
             {
-                this.delivery = delivery; 
+                this.delivery = delivery;
                 fromAddress.Text = delivery.FromAddress;
                 status.Text = delivery.Status;
                 commit.Text = delivery.Commit;
                 price.Text = delivery.Price.ToString();
-                userId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.UserId && x.IdRole == 2);
-                deliveryId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
+                userId.Text = AllUsers.FirstOrDefault(x => x.Id == delivery.UserId && x.IdRole == 2)?.FIO;
+                deliveryId.Text = AllUsers.FirstOrDefault(x => x.Id == delivery.DeliveryId && x.IdRole == 1)?.FIO;
                 objectId.SelectedIndex = AllObjects.FindIndex(x => x.Id == delivery.IdObject);
                 bthAdd.Content = "Изменить";
             }
             else
             {
-                status.SelectedIndex = 0;
                 bthAdd.Content = "Добавить";
             }
         }
 
         private void AddRecord(object sender, RoutedEventArgs e)
         {
-            int priceValue = int.Parse(price.Text);
-            if (userId.SelectedIndex == -1 || deliveryId.SelectedIndex == -1 || objectId.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(fromAddress.Text) || string.IsNullOrWhiteSpace(commit.Text) || string.IsNullOrWhiteSpace(price.Text) || objectId.SelectedItem == null)
             {
-                MessageBox.Show("Необходимо выбрать заказчика, курьера и объект доставки");
+                MessageBox.Show("Пожалуйста, заполните все поля (кроме Курьера).");
                 return;
             }
 
-            int userIdValue = AllUsers.First(x => x.FIO == (string)userId.SelectedItem && x.IdRole == 2).Id;
-            int deliveryIdValue = AllUsers.First(x => x.FIO == (string)deliveryId.SelectedItem && x.IdRole == 1).Id;
+            int priceValue = int.Parse(price.Text);
+            int userIdValue = loggedInUser.Id;
+            int? deliveryIdValue = null; // Установите значение в null, если курьер не назначен
+
+            if (!string.IsNullOrWhiteSpace(deliveryId.Text))
+            {
+                deliveryIdValue = AllUsers.First(x => x.FIO == deliveryId.Text && x.IdRole == 1).Id;
+            }
+
             int objectIdValue = AllObjects.First(x => x.Commit == (string)objectId.SelectedItem).Id;
             DateTime creationDate = DateTime.ParseExact(date.Text, "dd.MM.yyyy HH:mm", null);
 
@@ -92,22 +85,20 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
                     priceValue,
                     creationDate);
                 newDelivery.Add();
-                MessageBox.Show("Запись успешно добавлена.");
+                MessageBox.Show("Заказ успешно добавлен.");
             }
             else
             {
-                delivery = new DeliveryContext(
-                    delivery.Id,
-                    userIdValue,
-                    deliveryIdValue,
-                    objectIdValue,
-                    fromAddress.Text,
-                    status.Text,
-                    commit.Text,
-                    priceValue,
-                    creationDate);
+                delivery.UserId = userIdValue;
+                delivery.DeliveryId = deliveryIdValue;
+                delivery.IdObject = objectIdValue;
+                delivery.FromAddress = fromAddress.Text;
+                delivery.Status = status.Text;
+                delivery.Commit = commit.Text;
+                delivery.Price = priceValue;
+                delivery.Date = creationDate;
                 delivery.Update();
-                MessageBox.Show("Запись успешно обновлена.");
+                MessageBox.Show("Заказ успешно обновлен.");
             }
             MainWindow.init.OpenPage(new PagesUser.Delivery.Main());
         }
