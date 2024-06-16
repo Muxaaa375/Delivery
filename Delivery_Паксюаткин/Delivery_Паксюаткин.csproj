@@ -126,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PagesCourier\DeliveryOj\Add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesCourier\DeliveryOj\Items\Item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagesUser\Delivery\Add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesUser\Delivery\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +238,9 @@
     <Compile Include="Model\ObjectDelivery.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="PagesCourier\DeliveryOj\Add.xaml.cs">
+      <DependentUpon>Add.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PagesCourier\DeliveryOj\Items\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
@@ -253,6 +264,9 @@
     </Compile>
     <Compile Include="PagesUser\Delivery\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesUser\Delivery\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
     <Compile Include="PagesUser\Delivery\Items\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>

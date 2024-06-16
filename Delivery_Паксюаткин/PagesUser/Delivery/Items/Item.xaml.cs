@@ -33,7 +33,7 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
             var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 2);
 
             if (courier != null)
-                deliveryId.Text = courier.FIO;
+                delivery_Id.Text = courier.FIO;
             if (customer != null)
                 userId.Text = customer.FIO;
 
@@ -76,7 +76,47 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
 
         private void ChatRecord(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string senderFIO = userId.Text;
+                string deliveryFIO = delivery_Id.Text; 
+                string deliveryCommit = commit.Text; 
 
+                UsersContext senderUser = UsersContext.Select().FirstOrDefault(u => u.FIO == senderFIO);
+                UsersContext deliveryUser = UsersContext.Select().FirstOrDefault(u => u.FIO == deliveryFIO);
+
+                if (senderUser == null)
+                {
+                    throw new Exception("Пользователь с указанным FIO не найден.");
+                }
+
+                if (deliveryUser == null)
+                {
+                    throw new Exception("Курьер с указанным FIO не найден.");
+                }
+
+                int senderId = senderUser.Id;
+                int receiverId = deliveryUser.Id;
+
+                DeliveryContext delivery = DeliveryContext.Select().FirstOrDefault(d => d.Commit == deliveryCommit);
+
+                if (delivery == null)
+                {
+                    throw new Exception("Заказ с указанным commit не найден.");
+                }
+
+                int deliveryId = delivery.Id;
+
+                MainWindow.init.OpenPage(new PagesUser.Delivery.Chat(senderId, receiverId, deliveryId, deliveryCommit));
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Неверный формат входных данных: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.Message);
+            }
         }
 
         private void EditRecord(object sender, RoutedEventArgs e)
@@ -86,5 +126,5 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
                 MainWindow.init.OpenPage(new PagesUser.Delivery.Add(this.delivery));
             }
         }
-    }
+    }        
 }

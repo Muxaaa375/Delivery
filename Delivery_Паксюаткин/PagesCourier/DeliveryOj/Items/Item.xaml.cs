@@ -37,7 +37,7 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
 
 
             if (courier != null)
-                deliveryId.Text = courier.FIO;
+                delivery_Id.Text = courier.FIO;
             if (customer != null)
                 userId.Text = customer.FIO;
 
@@ -68,7 +68,49 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
 
         private void ChatRecord(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string senderFIO = userId.Text;
+                string deliveryFIO = delivery_Id.Text;
+                string deliveryCommit = commit.Text;
 
+                // Получение информации о пользователях и доставке
+                UsersContext senderUser = UsersContext.Select().FirstOrDefault(u => u.FIO == senderFIO);
+                UsersContext deliveryUser = UsersContext.Select().FirstOrDefault(u => u.FIO == deliveryFIO);
+
+                if (senderUser == null)
+                {
+                    throw new Exception("Пользователь с указанным FIO не найден.");
+                }
+
+                if (deliveryUser == null)
+                {
+                    throw new Exception("Курьер с указанным FIO не найден.");
+                }
+
+                int senderId = senderUser.Id;
+                int receiverId = deliveryUser.Id;
+
+                DeliveryContext delivery = DeliveryContext.Select().FirstOrDefault(d => d.Commit == deliveryCommit);
+
+                if (delivery == null)
+                {
+                    throw new Exception("Заказ с указанным commit не найден.");
+                }
+
+                int deliveryId = delivery.Id;
+
+                // Открытие страницы чата с передачей необходимых данных
+                MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Add(senderId, receiverId, deliveryId, deliveryCommit));
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Неверный формат входных данных: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.Message);
+            }
         }
     }
 }
