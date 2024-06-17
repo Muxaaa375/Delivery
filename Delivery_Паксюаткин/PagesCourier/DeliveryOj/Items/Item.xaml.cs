@@ -23,22 +23,28 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
         Main main;
         List<UsersContext> AllUsers;
         List<ObjectDeliveryContext> AllObjects = ObjectDeliveryContext.Select();
+        private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
 
         public Item(DeliveryContext delivery, UsersContext user, Main main)
         {
             InitializeComponent();
-
+            loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
 
             AllUsers = UsersContext.Select();
 
 
-            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
-            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 2);
+            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
+            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
 
 
             if (courier != null)
-                delivery_Id.Text = courier.FIO;
+                deliveryId.Text = loggedInUser.FIO;
+            else
+                deliveryId.Text = loggedInUser.FIO;
+
             if (customer != null)
+                userId.Text = customer.FIO;
+            else
                 userId.Text = customer.FIO;
 
             fromAddress.Text = delivery.FromAddress;
@@ -71,7 +77,7 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
             try
             {
                 string senderFIO = userId.Text;
-                string deliveryFIO = delivery_Id.Text;
+                string deliveryFIO = deliveryId.Text;
                 string deliveryCommit = commit.Text;
 
                 // Получение информации о пользователях и доставке
@@ -98,10 +104,10 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
                     throw new Exception("Заказ с указанным commit не найден.");
                 }
 
-                int deliveryId = delivery.Id;
+                int deliveryID = delivery.Id;
 
                 // Открытие страницы чата с передачей необходимых данных
-                MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Add(senderId, receiverId, deliveryId, deliveryCommit));
+                MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Add(senderId, receiverId, deliveryID, deliveryCommit));
             }
             catch (FormatException ex)
             {

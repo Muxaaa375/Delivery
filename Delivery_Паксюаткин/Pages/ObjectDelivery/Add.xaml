@@ -15,9 +15,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Создание Объекта доставки" HorizontalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,213,353" Foreground="Black" Grid.ColumnSpan="3" Width="537"/>
+            <Label Content="Создание Объекта доставки" HorizontalAlignment="Left" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,213,353" Foreground="Black" Grid.ColumnSpan="3" Width="537" VerticalAlignment="Top"/>
 
             <Image x:Name="imagePreview" Width="80" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,57,0,0" Source="/Image/icon-korobka.png"/>
+            <Button Content="Загрузить фото" Click="UploadImage" Height="24" Margin="10,186,10,0" VerticalAlignment="Top" Width="310" Grid.Column="1" HorizontalAlignment="Left"/>
 
             <Label Content="Вес: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,57,10,0"/>
             <TextBox x:Name="weight" Height="25" Grid.Column="1" Margin="10,83,10,0" VerticalAlignment="Top"/>
@@ -37,7 +38,7 @@
 
         </Grid>
         <Label Content="Фото:" VerticalAlignment="Top" Margin="130,181,360,0" Height="25"/>
-        <Button Content="Загрузить фото" Click="UploadImage" Height="24" Margin="130,206,360,0" VerticalAlignment="Top"/>
+
         <TextBlock x:Name="imagePathText" Height="25" Margin="130,232,360,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

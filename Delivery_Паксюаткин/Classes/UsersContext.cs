@@ -66,7 +66,9 @@ namespace Delivery_Паксюаткин.Classes
                             $"`Image`='{this.Image}', " +
                             $"`PhoneNumber`='{this.PhoneNumber}', " +
                             $"`Address`='{this.Address}', " +
-                            $"`IdRole`='{this.IdRole}' " +
+                            $"`IdRole`='{this.IdRole}', " +
+                            $"`Login`='{this.Login}', " +
+                            $"`Password`='{this.Password}' " +
                          "WHERE " +
                             $"`Id`='{this.Id}'";
             MySqlConnection connection = Connection.OpenConnection();

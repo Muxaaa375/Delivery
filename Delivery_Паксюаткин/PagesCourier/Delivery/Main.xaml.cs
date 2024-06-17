@@ -35,7 +35,10 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
             {
                 if (item.Status == "Ожидает доставки")
                 {
-                    parent.Children.Add(new Items.Item(item, null, this));
+                    if (item.DeliveryId == null)
+                    {
+                        parent.Children.Add(new Items.Item(item, null, this));
+                    }
                 }
             }
         }

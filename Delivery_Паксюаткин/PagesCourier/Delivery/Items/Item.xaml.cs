@@ -1,4 +1,5 @@
 ﻿using Delivery_Паксюаткин.Classes;
+using Delivery_Паксюаткин.Model;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,17 +13,18 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
         Main main;
         List<UsersContext> AllUsers;
         List<ObjectDeliveryContext> AllObjDel = ObjectDeliveryContext.Select();
+        private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
 
         public Item(DeliveryContext delivery, UsersContext user, Main main)
         {
             InitializeComponent();
-
+            loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
 
             AllUsers = UsersContext.Select();
 
 
-            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
-            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 2);
+            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
+            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
 
 
             if (courier != null)
@@ -48,10 +50,14 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
             if (MessageBox.Show("Вы действительно хотите принять заказ?", "Подтверждение заказа", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 delivery.Status = "У курьера";
+                delivery.DeliveryId = loggedInUser.Id;
                 delivery.Update();
                 status.Text = "У курьера";
+                deliveryId.Text = loggedInUser.FIO;
+
+
                 MessageBox.Show("Заказ успешно принят.");
-            }
+            }           
         }
     }
 }

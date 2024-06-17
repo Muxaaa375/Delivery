@@ -10,9 +10,6 @@ using Microsoft.Win32;
 
 namespace Delivery_Паксюаткин.Pages.Users
 {
-    /// <summary>
-    /// Логика взаимодействия для Add.xaml
-    /// </summary>
     public partial class Add : Page
     {
         List<RolesContext> AllRoles = RolesContext.Select();
@@ -41,9 +38,11 @@ namespace Delivery_Паксюаткин.Pages.Users
 
                 // Абсолютный путь для загрузки изображения
                 string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string imagePathAbsolute = Path.Combine(projectDirectory, imagePath.Replace("/", "\\"));
-
-                LoadImage(imagePathAbsolute);
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    string imagePathAbsolute = Path.Combine(projectDirectory, imagePath.Replace("/", "\\"));
+                    LoadImage(imagePathAbsolute);
+                }
             }
             else
             {
@@ -88,7 +87,6 @@ namespace Delivery_Паксюаткин.Pages.Users
         {
             if (!string.IsNullOrEmpty(path))
             {
-
                 string absolutePath = Path.GetFullPath(path);
                 if (File.Exists(absolutePath))
                 {
@@ -99,7 +97,6 @@ namespace Delivery_Паксюаткин.Pages.Users
                     bitmap.EndInit();
                     imagePreview.Source = bitmap;
                 }
-
             }
         }
 
@@ -126,7 +123,7 @@ namespace Delivery_Паксюаткин.Pages.Users
                 UsersContext newUser = new UsersContext(
                     0,
                     fio.Text,
-                    imagePath,
+                    string.IsNullOrEmpty(imagePath) ? null : imagePath,
                     phoneNumber.Text,
                     address.Text,
                     AllRoles.Find(x => x.Role == role.SelectedItem).Id,
@@ -141,7 +138,7 @@ namespace Delivery_Паксюаткин.Pages.Users
                 userContext = new UsersContext(
                     userContext.Id,
                     fio.Text,
-                    imagePath,
+                    string.IsNullOrEmpty(imagePath) ? null : imagePath,
                     phoneNumber.Text,
                     address.Text,
                     AllRoles.Find(x => x.Role == role.SelectedItem).Id,

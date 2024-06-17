@@ -99,5 +99,10 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
             }
             MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
         }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
+        }
     }
 }

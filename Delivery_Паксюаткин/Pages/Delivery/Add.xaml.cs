@@ -29,9 +29,9 @@ namespace Delivery_Паксюаткин.Pages.Delivery
 
             foreach (var item in AllUsers)
             {
-                if (item.IdRole == 1)
+                if (item.IdRole == 2)
                     deliveryId.Items.Add(item.FIO);
-                else if (item.IdRole == 2)
+                else if (item.IdRole == 1)
                     userId.Items.Add(item.FIO);
             }
 
@@ -53,8 +53,8 @@ namespace Delivery_Паксюаткин.Pages.Delivery
                 status.Text = delivery.Status;
                 commit.Text = delivery.Commit;
                 price.Text = delivery.Price.ToString();
-                userId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.UserId && x.IdRole == 2);
-                deliveryId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
+                userId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.UserId && x.IdRole == 1);
+                deliveryId.SelectedIndex = AllUsers.FindIndex(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
                 objectId.SelectedIndex = AllObjects.FindIndex(x => x.Id == delivery.IdObject);
                 bthAdd.Content = "Изменить";
             }
@@ -79,8 +79,8 @@ namespace Delivery_Паксюаткин.Pages.Delivery
                 return;
             }
 
-            int userIdValue = AllUsers.First(x => x.FIO == (string)userId.SelectedItem && x.IdRole == 2).Id;
-            int deliveryIdValue = AllUsers.First(x => x.FIO == (string)deliveryId.SelectedItem && x.IdRole == 1).Id;
+            int userIdValue = AllUsers.First(x => x.FIO == (string)userId.SelectedItem && x.IdRole == 1).Id;
+            int deliveryIdValue = AllUsers.First(x => x.FIO == (string)deliveryId.SelectedItem && x.IdRole == 2).Id;
             int objectIdValue = AllObjects.First(x => x.Commit == (string)objectId.SelectedItem).Id;
             DateTime creationDate = DateTime.ParseExact(date.Text, "dd.MM.yyyy HH:mm", null);
 

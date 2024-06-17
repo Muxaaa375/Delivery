@@ -26,9 +26,9 @@ namespace Delivery_Паксюаткин.Pages.Messages
             InitializeComponent();
             foreach (var item in AllUsers)
             {
-                if (item.IdRole == 1)
+                if (item.IdRole == 2)
                     receiverComboBox.Items.Add(item.FIO);
-                else if (item.IdRole == 2)
+                else if (item.IdRole == 1)
                     senderComboBox.Items.Add(item.FIO);
             }
 

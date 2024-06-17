@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Объект доставки" HorizontalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,213,353" Foreground="Black" Grid.ColumnSpan="3" Width="537"/>
+            <Label Content="Объект доставки" HorizontalAlignment="Left" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,213,353" Foreground="Black" Grid.ColumnSpan="3" Width="537" VerticalAlignment="Top"/>
 
             <Image x:Name="imagePreview" Width="80" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,57,0,0" Source="/Image/icon-korobka.png"/>
 
@@ -36,7 +36,7 @@
 
         </Grid>
         <Label Content="Фото:" VerticalAlignment="Top" Margin="130,181,360,0" Height="25"/>
-        <Button Content="Загрузить фото" Click="UploadImage" Height="24" Margin="130,206,360,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <Button Content="Загрузить фото" Click="UploadImage" Height="24" Margin="130,206,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="310"/>
         <TextBlock x:Name="imagePathText" Height="25" Margin="130,232,360,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

@@ -9,14 +9,14 @@
       Title="Main">
 
     <Grid Background="White">
-        <Grid Background="#FF83FF49" Margin="190,90,190,0" Height="271" VerticalAlignment="Top">
+        <Grid Background="#FF83FF49" Margin="0" Height="271" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Click="OpenLogin" Content="Войти" Height="24"  HorizontalAlignment="Center" Width="100" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="0,181,0,0" />
 
             <TextBox x:Name="login" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="110,111,110,0"/>
             <PasswordBox x:Name="pwd" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="200" Margin="0,152,0,0"/>
             <Label Content="Авторизация" HorizontalAlignment="Center" FontFamily="Bahnschrift SemiLight" FontSize="36"  Foreground="Black" Margin="0,43,0,179"/>
 
-            <Label Content="Ⓒ Паксюаткин М.А." HorizontalAlignment="Center" Width="104" FontFamily="Microsoft JhengHei UI Light" FontSize="10" Margin="158,272,158,-26" FontWeight="Bold" />
+            <Label Content="Ⓒ Паксюаткин М.А." HorizontalAlignment="Center" Width="104" FontFamily="Microsoft JhengHei UI Light" FontSize="10" Margin="0,277,0,-31" FontWeight="Bold" />
             <Label Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Width="43" Height="7" Margin="0,104,0,0" >
                 <Label.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -38,10 +38,10 @@
             </Label>
             <Label Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Width="44" Height="4" Margin="0,153,0,0" Background="White" />
             <Label Content="Пароль" HorizontalAlignment="Center" Width="52" Margin="0,139,0,106"/>
-            <Button Click="OpenRegister" Content="Зарегистрироваться" Height="18"  HorizontalAlignment="Left" Width="117" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="306,250,0,0" FontSize="10" />
+            <Button Click="OpenRegister" Content="Зарегистрироваться" Height="18"  HorizontalAlignment="Center" Width="116" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="10" />
         </Grid>
-        <Label Content="Курьер: c - c" HorizontalAlignment="Left" Margin="10,456,0,0" VerticalAlignment="Top" Width="175" FontSize="10"/>
-        <Label Content="Пользователь: u - u" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="175" FontSize="10"/>
-        <Label Content="Админ: asd - asd" HorizontalAlignment="Left" Margin="10,433,0,0" VerticalAlignment="Top" Width="175" FontSize="10"/>
+        <Label Content="Курьер: c - c" Margin="10,456,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
+        <Label Content="Пользователь: u - u" Margin="10,479,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
+        <Label Content="Админ: asd - asd" Margin="10,433,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
     </Grid>
 </Page>

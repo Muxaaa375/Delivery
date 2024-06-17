@@ -9,23 +9,24 @@
       Title="Register">
 
     <Grid Background="White">
-        <Grid Background="#FF83FF49" Margin="190,24,190,24">
-            <Button Click="OpenRegister" Content="Зарегистрироваться" Height="24"  HorizontalAlignment="Center" Width="144" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="0,302,0,0" />
+        <Grid Background="#FF83FF49" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="OpenRegister" Content="Зарегистрироваться" Height="24"  HorizontalAlignment="Center" Width="144" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="138,333,138,0" />
 
-            <TextBox x:Name="fio" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Margin="0,148,0,0"/>
-            <TextBox x:Name="phoneNumber" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,177,0,0"/>
-            <TextBox x:Name="login" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,206,0,0"/>
-            <TextBox x:Name="pwd" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="0,235,0,0"/>
-            <ComboBox x:Name="role" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="200" Margin="0,264,0,0"/>
+            <TextBox x:Name="fio" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Margin="111,178,111,0"/>
+            <TextBox x:Name="phoneNumber" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="110,207,110,0"/>
+            <TextBox x:Name="login" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="110,236,110,0"/>
+            <TextBox x:Name="pwd" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="110,265,110,0"/>
+            <ComboBox x:Name="role" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="200" Margin="110,294,110,0"/>
 
-            <Label Content="Регистрация" HorizontalAlignment="Center" FontFamily="Bahnschrift SemiLight" FontSize="36"  Foreground="Black" Margin="0,58,0,294"/>
-            <Label Content="ФИО" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" Height="23" Margin="63,148,0,0"/>
-            <Label Content="Номер телефона" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Height="26" Margin="1,177,0,0"/>
-            <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Height="23" Margin="50,207,0,0"/>
-            <Label Content="Пароль" VerticalAlignment="Top" Height="26" Margin="50,233,316,0"/>
-            <Label Content="Роль" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="25" Margin="0,264,315,0"/>
+            <Label Content="Регистрация" HorizontalAlignment="Center" FontFamily="Bahnschrift SemiLight" FontSize="36"  Foreground="Black" Margin="99,104,99,248"/>
+            <Label Content="ФИО" HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="24" Margin="273,177,0,0"/>
+            <Label Content="Номер телефона" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Height="29" Margin="205,205,0,0"/>
+            <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Height="23" Margin="263,234,0,0"/>
+            <Label Content="Пароль" VerticalAlignment="Top" Height="26" Margin="257,263,109,0"/>
+            <Label Content="Роль" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="25" Margin="0,292,123,0"/>
 
             <Label Content="Ⓒ Паксюаткин М.А." HorizontalAlignment="Center" Width="104" FontFamily="Microsoft JhengHei UI Light" FontSize="10" Margin="0,365,0,10" FontWeight="Bold" />
+            <Button Click="Exit" Content="Назад" Height="17"  HorizontalAlignment="Left" Width="43" Background="White" BorderBrush="DeepSkyBlue" Foreground="Black" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="9" />
         </Grid>
     </Grid>
 </Page>

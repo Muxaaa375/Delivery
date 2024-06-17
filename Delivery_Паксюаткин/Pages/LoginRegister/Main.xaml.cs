@@ -87,12 +87,12 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
         {
             switch (roleId)
             {
-                case 1: // Администратор
-                    return "/Pages/Users/Main.xaml";
-                case 2: // Пользователь
+                case 1: // Пользователь
                     return "/PagesUser/Delivery/Main.xaml";
-                case 3: // Курьер
+                case 2: // Курьер
                     return "/PagesCourier/Delivery/Main.xaml";
+                case 3: // Админ
+                    return "/Pages/Users/Main.xaml";
                 default:
                     return null;
             }

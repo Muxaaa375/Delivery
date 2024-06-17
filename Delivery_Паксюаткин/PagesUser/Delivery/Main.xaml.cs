@@ -1,4 +1,5 @@
 ﻿using Delivery_Паксюаткин.Classes;
+using Delivery_Паксюаткин.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,10 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
         {
             foreach (DeliveryContext item in AllDelivery)
             {
-                parent.Children.Add(new Items.Item(item, null, this));
+                if (item.UserId == loggedInUser.Id)
+                {
+                    parent.Children.Add(new Items.Item(item, null, this));
+                }
             }
         }
 

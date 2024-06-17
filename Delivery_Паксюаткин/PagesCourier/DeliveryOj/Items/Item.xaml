@@ -21,7 +21,7 @@
             <Label Content="Заказчик: " Grid.Column="1" VerticalAlignment="Top" Margin="16,63,16,0"/>
             <TextBox x:Name="userId" Height="26" Grid.Column="1" Margin="16,89,16,0" VerticalAlignment="Top" IsEnabled="False"/>
             <Label Content="Курьер: " Grid.Column="1" VerticalAlignment="Top" Margin="16,115,16,0"/>
-            <TextBox x:Name="delivery_Id" Height="26" Grid.Column="1" Margin="16,141,16,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <TextBox x:Name="deliveryId" Height="26" Grid.Column="1" Margin="16,141,16,0" VerticalAlignment="Top" IsEnabled="False"/>
             <Label Content="Комментарий:" Grid.Column="3" VerticalAlignment="Top" Margin="9,11,10,0"/>
             <TextBox x:Name="commit" Grid.Column="3" Margin="10,37,10,0" Height="76" VerticalAlignment="Top" IsEnabled="False"/>
             <Label Content="Дата создания:" Grid.Column="2" VerticalAlignment="Top" Margin="12,63,10,0"/>

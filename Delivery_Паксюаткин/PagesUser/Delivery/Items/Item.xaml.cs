@@ -23,19 +23,23 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
         Main main;
         List<UsersContext> AllUsers;
         List<ObjectDeliveryContext> AllObjDel = ObjectDeliveryContext.Select();
+        private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
 
         public Item(DeliveryContext delivery, UsersContext user, Main main)
         {
             InitializeComponent();
+            loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
 
             AllUsers = UsersContext.Select();
-            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
-            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 2);
+            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
+            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
 
             if (courier != null)
                 delivery_Id.Text = courier.FIO;
+
             if (customer != null)
-                userId.Text = customer.FIO;
+                userId.Text = loggedInUser.FIO; ;
+            
 
             fromAddress.Text = delivery.FromAddress;
             status.Text = delivery.Status;

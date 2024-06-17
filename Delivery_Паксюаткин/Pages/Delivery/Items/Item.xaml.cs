@@ -32,8 +32,8 @@ namespace Delivery_Паксюаткин.Pages.Delivery.Items
             AllUsers = UsersContext.Select();
 
 
-            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 1);
-            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 2);
+            var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
+            var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
 
 
             if (courier != null)

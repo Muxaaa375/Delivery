@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Delivery_Паксюаткин"
         mc:Ignorable="d"
-            Title="Доставка" MinHeight="550" MinWidth="820" MaxHeight="550" MaxWidth="820" Icon="/Image/icon.png">
+            Title="Доставка" MinHeight="550" MinWidth="840" Icon="/Image/icon.png">
     <Grid Margin="0">
         
         <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
