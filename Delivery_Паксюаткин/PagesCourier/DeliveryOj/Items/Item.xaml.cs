@@ -1,4 +1,5 @@
 ﻿using Delivery_Паксюаткин.Classes;
+using Delivery_Паксюаткин.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,9 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
         List<UsersContext> AllUsers;
         List<ObjectDeliveryContext> AllObjects = ObjectDeliveryContext.Select();
         private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
+        private ObjectDeliveryContext objectDelivery;
 
-        public Item(DeliveryContext delivery, UsersContext user, Main main)
+        public Item(DeliveryContext delivery, UsersContext user, Main main, ObjectDeliveryContext objectDelivery)
         {
             InitializeComponent();
             loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
@@ -55,9 +57,20 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
             objectId.Text = delivery.IdObject.ToString();
             objectId.Text = AllObjects.Find(x => x.Id == delivery.IdObject).Commit;
 
+            
+            if (objectDelivery != null && objectDelivery.Status == "Доставлено")
+            {
+                btnDo.IsEnabled = true;
+            }
+            else
+            {
+                btnDo.IsEnabled = false;
+            }
+
             this.delivery = delivery;
             this.user = user;
             this.main = main;
+            this.objectDelivery = objectDelivery;
         }
 
         private void DoRecord(object sender, RoutedEventArgs e)
@@ -117,6 +130,11 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
             {
                 MessageBox.Show("Произошла ошибка: " + ex.Message);
             }
+        }
+
+        private void ObRecord(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Add(this.objectDelivery));
         }
     }
 }

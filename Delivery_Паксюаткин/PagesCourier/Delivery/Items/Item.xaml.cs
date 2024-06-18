@@ -1,5 +1,6 @@
 ﻿using Delivery_Паксюаткин.Classes;
 using Delivery_Паксюаткин.Model;
+using Delivery_Паксюаткин.PagesUser.Delivery;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,8 +15,9 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
         List<UsersContext> AllUsers;
         List<ObjectDeliveryContext> AllObjDel = ObjectDeliveryContext.Select();
         private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
+        private ObjectDeliveryContext objectDelivery;
 
-        public Item(DeliveryContext delivery, UsersContext user, Main main)
+        public Item(DeliveryContext delivery, UsersContext user, Main main, ObjectDeliveryContext objectDelivery)
         {
             InitializeComponent();
             loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
@@ -43,6 +45,7 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
             this.delivery = delivery;
             this.user = user;
             this.main = main;
+            this.objectDelivery = objectDelivery;
         }
 
         private void DoRecord(object sender, RoutedEventArgs e)
@@ -58,6 +61,11 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
 
                 MessageBox.Show("Заказ успешно принят.");
             }           
+        }
+
+        private void DoObRecord(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

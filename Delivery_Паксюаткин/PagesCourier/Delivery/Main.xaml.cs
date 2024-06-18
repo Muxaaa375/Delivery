@@ -37,7 +37,7 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
                 {
                     if (item.DeliveryId == null)
                     {
-                        parent.Children.Add(new Items.Item(item, null, this));
+                        parent.Children.Add(new Items.Item(item, null, this, null));
                     }
                 }
             }

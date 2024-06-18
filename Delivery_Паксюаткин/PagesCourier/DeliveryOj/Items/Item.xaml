@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items"
                      mc:Ignorable="d">
-    <Grid Background="#FFE2E2E2">
+    <Grid Background="#FFE2E2E2" Height="224">
         <Grid Margin="10" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100px"/>
@@ -29,10 +29,11 @@
             <Label Content="Объект доставки: " Grid.Column="2" VerticalAlignment="Top" Margin="12,115,10,10"/>
             <TextBox x:Name="objectId" Height="26" Grid.Column="2" Margin="11,141,10,10" VerticalAlignment="Top" IsEnabled="False"/>
 
-            <Button Click="DoRecord" Content="Доставлено" Height="25" Margin="10,112,0,0" HorizontalAlignment="Center" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
+            <Button x:Name="btnDo" Click="DoRecord" Content="Доставлено" Height="25" Margin="10,112,0,0" HorizontalAlignment="Center" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
             <Button Click="ChatRecord" Content="Чат с отправителем" Height="25" Margin="10,142,0,0" HorizontalAlignment="Center" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="9"/>
             <Label Content="Стоимость:" Grid.Column="3" VerticalAlignment="Top" Margin="11,115,9,0"/>
             <TextBox x:Name="price" Height="26" Grid.Column="3" Margin="10,141,9,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <Button Click="ObRecord" Content="Объекты доставки" Height="25" Margin="10,172,0,0" HorizontalAlignment="Left" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="9"/>
 
         </Grid>
     </Grid>

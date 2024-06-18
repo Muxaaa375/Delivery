@@ -4,7 +4,7 @@ using System;
 
 public class Connection
 {
-    public static readonly string confing = "server=127.0.0.1;port=3308;uid=root;pwd=;database=del;";
+    public static readonly string confing = "server=127.0.0.1;port=3308;uid=root;pwd=;database=Delivery;";
     public static MySqlConnection OpenConnection()
     {
         try

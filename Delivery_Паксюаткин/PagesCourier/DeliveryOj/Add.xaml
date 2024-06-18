@@ -5,29 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Delivery_Паксюаткин.PagesCourier.DeliveryOj"
       mc:Ignorable="d" 
-        Title="Add" MinHeight="490" MinWidth="800">
+          d:DesignHeight="450" d:DesignWidth="800"
+  Title="Add" MinHeight="490" MinWidth="800">
     <Grid Background="White">
-        <Grid Background="White" Margin="10,10,424,10" Width="366">
+        <Grid Background="White" Margin="10,10,10,10">
             <Label Content="Заказ:" Height="26" HorizontalAlignment="Left" Margin="164,10,0,0" VerticalAlignment="Top" />
             <Button Click="Exit" Content="Назад" Height="25" Margin="12,9,0,0" HorizontalAlignment="Left" Width="100" Background="#FFE63418" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
-            <TextBox x:Name="delivery" Height="22" HorizontalAlignment="Left" Margin="207,12,0,0" VerticalAlignment="Top" Width="116" IsReadOnly="True"/>
-            <TextBox x:Name="chatBox_1" Margin="0,70,10,60" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Right" Width="344" />
-            <TextBox x:Name="myName" Height="24" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True"/>
-            <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="3,0,0,27" VerticalAlignment="Bottom" />
-            <TextBox x:Name="messageText_1" Height="23" Margin="62,0,0,30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="273" />
-            <Button x:Name="sendMessageButton_1" Content="►" Height="23" HorizontalAlignment="Right" Margin="0,0,1,30" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Bottom" Width="25" Click="sendMessageButton_Click_1" RenderTransformOrigin="0.48,-0.246" IsEnabled="False"/>
-            <Image Width="19" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="143,12,0,0" Source="/Image/icon-korobka.png" IsEnabled="False"/>
-        </Grid>
-        <Grid Background="White" Margin="426,10,10,10" Width="364">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="229*"/>
-                <RowDefinition Height="6*"/>
-            </Grid.RowDefinitions>
-            <TextBox x:Name="chatBox_2" Margin="10,70,0,48" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="344" />
-            <TextBox x:Name="interlocutor" Height="23" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True"/>
-            <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,21" VerticalAlignment="Bottom" />
-            <TextBox x:Name="messageText_2" Height="23" HorizontalAlignment="Left" Margin="62,0,0,21" VerticalAlignment="Bottom" Width="273" />
-            <Button x:Name="sendMessageButton_2" Content="►" Height="23" HorizontalAlignment="Right" Margin="0,0,0,21" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Bottom" Width="25" Click="sendMessageButton_Click_2"/>
+            <TextBox x:Name="delivery" Height="22" HorizontalAlignment="Left" Margin="207,12,0,0" VerticalAlignment="Top" Width="206" IsReadOnly="True"/>
+            <RichTextBox x:Name="chatBox" Margin="0,70,10,60" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="764" />
+            <TextBox x:Name="myName" Height="24" HorizontalAlignment="Left" Margin="12,41,0,0" VerticalAlignment="Top" Width="160" IsReadOnly="True"/>
+            <Label Content="Message:" Height="28" Margin="3,0,0,27" VerticalAlignment="Bottom" />
+            <TextBox x:Name="messageText" Height="23" Margin="84,0,0,30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="560" />
+            <Button x:Name="sendMessageButton" Content="►" Height="23" Margin="679,0,0,30" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Bottom" Width="54" Click="sendMessageButton_Click" RenderTransformOrigin="0.48,-0.246" HorizontalAlignment="Left"/>
+            <Image Width="19" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="143,12,0,0" Source="/Image/icon-korobka.png"/>
+            <TextBox x:Name="interlocutor" Height="24" HorizontalAlignment="Left" Margin="185,41,0,0" VerticalAlignment="Top" Width="160" IsReadOnly="True"/>
+            <Button x:Name="sendImageButton" Content="📷" Height="23" HorizontalAlignment="Left" Margin="649,0,0,30" Background="Black" BorderBrush="#FF07A1E2" Foreground="White" VerticalAlignment="Bottom" Width="25" Click="sendImageButton_Click" RenderTransformOrigin="0.48,-0.246"/>
+
+
         </Grid>
     </Grid>
 </Page>

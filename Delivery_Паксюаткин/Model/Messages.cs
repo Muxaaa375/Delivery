@@ -10,15 +10,15 @@ namespace Delivery_Паксюаткин.Model
 {
     public class Messages
     {
-        public int Id { get; set; } // Код
-        public int IdDelivery { get; set; } // Код доставки
-        public int SenderId { get; set; } // Код отправителя
-        public int ReceiverId { get; set; } // Код получателя
-        public string MessageText { get; set; } // Сообщение
-        public string ImagePath { get; set; } // Фотография
-        public DateTime DateTime { get; set; } // Дата и время
+        public int Id { get; set; }
+        public int IdDelivery { get; set; }
+        public int SenderId { get; set; }
+        public int ReceiverId { get; set; }
+        public string MessageText { get; set; }
+        public byte[] ImagePath { get; set; } // Изменено на byte[] для хранения blob
+        public DateTime DateTime { get; set; }
 
-        public Messages(int id, int idDelivery, int senderId, int receiverId, string messageText, string imagePath, DateTime dateTime)
+        public Messages(int id, int idDelivery, int senderId, int receiverId, string messageText, byte[] imagePath, DateTime dateTime)
         {
             Id = id;
             IdDelivery = idDelivery;
@@ -28,12 +28,15 @@ namespace Delivery_Паксюаткин.Model
             ImagePath = imagePath;
             DateTime = dateTime;
         }
+
         public void Delete()
         {
-            string SQL = $"DELETE FROM `messages` WHERE `Id` = {this.Id}";
+            string SQL = $"DELETE FROM `messages` WHERE `Id` = {Id}";
             MySqlConnection connection = Connection.OpenConnection();
             Connection.Query(SQL, connection);
             Connection.CloseConnection(connection);
         }
     }
 }
+
+

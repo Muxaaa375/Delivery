@@ -32,6 +32,7 @@
             <Button Click="DoRecord" Content="Принять" Height="25" Margin="10,142,0,0" HorizontalAlignment="Center" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
             <Label Content="Стоимость:" Grid.Column="3" VerticalAlignment="Top" Margin="11,115,9,0"/>
             <TextBox x:Name="price" Height="26" Grid.Column="3" Margin="10,141,9,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <Button Click="DoObRecord" Content="Объект доставки" Height="25" Margin="9,112,0,0" HorizontalAlignment="Left" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="10"/>
 
         </Grid>
     </Grid>

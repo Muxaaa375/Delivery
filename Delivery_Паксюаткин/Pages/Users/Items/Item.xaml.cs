@@ -1,15 +1,9 @@
 ﻿using Delivery_Паксюаткин.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Delivery_Паксюаткин.Classes;
-using Delivery_Паксюаткин.Model;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace Delivery_Паксюаткин.Pages.Users.Items
 {
@@ -26,7 +20,6 @@ namespace Delivery_Паксюаткин.Pages.Users.Items
         {
             InitializeComponent();
             fio.Text = users.FIO;
-            image.Text = users.Image;
             phoneNumber.Text = users.PhoneNumber;
             address.Text = users.Address;
             role.Text = AllRoles.Find(x => x.Id == users.IdRole).Role;
@@ -35,30 +28,23 @@ namespace Delivery_Паксюаткин.Pages.Users.Items
             this.main = main;
             DataContext = users;
 
-            LoadImage(users.Image); // Передаем относительный путь к изображению
+            LoadImage(users.Image);
         }
 
-        private void LoadImage(string relativeImagePath)
+        private void LoadImage(byte[] imageData)
         {
-
-            if (!string.IsNullOrEmpty(relativeImagePath))
+            if (imageData != null)
             {
-                // Формируем абсолютный путь
-                string basePath = AppDomain.CurrentDomain.BaseDirectory;
-                string absolutePath = Path.Combine(basePath, relativeImagePath);
-
-                // Проверяем, существует ли файл по сформированному абсолютному пути
-                if (File.Exists(absolutePath))
+                using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(absolutePath, UriKind.Absolute);
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // Это важно для избежания блокировок файлов
+                    bitmap.StreamSource = ms;
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
                     userImage.Source = bitmap;
                 }
             }
-
         }
 
         private void EditRecord(object sender, RoutedEventArgs e)

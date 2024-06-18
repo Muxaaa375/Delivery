@@ -8,16 +8,16 @@ namespace Delivery_Паксюаткин.Model
 {
     public class Users
     {
-        public int Id { get; set; } // Код
-        public string FIO { get; set; } // ФИО
-        public string Image { get; set; } // Фотография
-        public string PhoneNumber { get; set; } // Номер телефона
-        public string Address { get; set; } // Адрес
-        public int IdRole { get; set; } // Код роли
-        public string Login { get; set; } // Логин
-        public string Password { get; set; } // Пароль
+        public int Id { get; set; }
+        public string FIO { get; set; }
+        public byte[] Image { get; set; } // Фотография
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public int IdRole { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
 
-        public Users(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
+        public Users(int Id, string FIO, byte[] Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
         {
             this.Id = Id;
             this.FIO = FIO;

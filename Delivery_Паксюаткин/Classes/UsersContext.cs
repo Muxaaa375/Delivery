@@ -7,7 +7,7 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class UsersContext : Users
     {
-        public UsersContext(int Id, string FIO, string Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
+        public UsersContext(int Id, string FIO, byte[] Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
             : base(Id, FIO, Image, PhoneNumber, Address, IdRole, Login, Password) { }
 
         public static List<UsersContext> Select()
@@ -21,7 +21,7 @@ namespace Delivery_Паксюаткин.Classes
                 AllUsers.Add(new UsersContext(
                     Data.GetInt32(0),
                     Data.GetString(1),
-                    Data.IsDBNull(2) ? null : Data.GetString(2),
+                    Data.IsDBNull(2) ? null : (byte[])Data["Image"],
                     Data.GetString(3),
                     Data.IsDBNull(4) ? null : Data.GetString(4),
                     Data.GetInt32(5),
@@ -46,14 +46,16 @@ namespace Delivery_Паксюаткин.Classes
                                 "`Password`) " +
                            "VALUES (" +
                                 $"'{this.FIO}', " +
-                                $"'{this.Image}', " +
+                                $"@image, " +
                                 $"'{this.PhoneNumber}', " +
                                 $"'{this.Address}', " +
                                 $"'{this.IdRole}', " +
                                 $"'{this.Login}', " +
                                 $"'{this.Password}')";
             MySqlConnection connection = Connection.OpenConnection();
-            Connection.Query(SQL, connection);
+            MySqlCommand command = new MySqlCommand(SQL, connection);
+            command.Parameters.AddWithValue("@image", this.Image);
+            command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
 
@@ -63,7 +65,7 @@ namespace Delivery_Паксюаткин.Classes
                             "`users` " +
                          "SET " +
                             $"`FIO`='{this.FIO}', " +
-                            $"`Image`='{this.Image}', " +
+                            $"`Image`=@image, " +
                             $"`PhoneNumber`='{this.PhoneNumber}', " +
                             $"`Address`='{this.Address}', " +
                             $"`IdRole`='{this.IdRole}', " +
@@ -72,9 +74,12 @@ namespace Delivery_Паксюаткин.Classes
                          "WHERE " +
                             $"`Id`='{this.Id}'";
             MySqlConnection connection = Connection.OpenConnection();
-            Connection.Query(SQL, connection);
+            MySqlCommand command = new MySqlCommand(SQL, connection);
+            command.Parameters.AddWithValue("@image", this.Image);
+            command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
+
         public void Delete()
         {
             string SQL = $"DELETE FROM `users` WHERE `Id` = '{this.Id}'";
