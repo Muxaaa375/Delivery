@@ -8,14 +8,14 @@ namespace Delivery_Паксюаткин.Model
 {
     public class ObjectDelivery
     {
-        public int Id { get; set; }
-        public int IdDelivery { get; set; }
-        public string Image { get; set; }
-        public int Weight { get; set; }
-        public string Commit { get; set; }
-        public string GetNumber { get; set; }
-        public string Address { get; set; }
-        public string Status { get; set; }
+        public int Id { get; set; } // Код
+        public int IdDelivery { get; set; } // Код доставки
+        public string Image { get; set; } // Фотография
+        public int Weight { get; set; } // Вес
+        public string Commit { get; set; } // Комментарий
+        public string GetNumber { get; set; } // Номер получателя
+        public string Address { get; set; } // Адрес доставки
+        public string Status { get; set; } // Статус
         public ObjectDelivery(int Id, int IdDelivery, string Image, int Weight, string Commit, string GetNumber, string Address, string Status)
         {
             this.Id = Id;

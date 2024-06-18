@@ -23,11 +23,11 @@
                 <RowDefinition Height="229*"/>
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="chatBox_2" Margin="10,70,0,48" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="344" />
+            <TextBox x:Name="chatBox_2" Margin="0,70,0,49" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Center" Width="344" />
             <TextBox x:Name="interlocutor" Height="23" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True"/>
-            <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="5,0,0,21" VerticalAlignment="Bottom" />
-            <TextBox x:Name="messageText_2" Height="23" HorizontalAlignment="Left" Margin="62,0,0,21" VerticalAlignment="Bottom" Width="273" />
-            <Button x:Name="sendMessageButton_2" Content="►" Height="23" HorizontalAlignment="Right" Margin="0,0,0,21" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Bottom" Width="25" Click="sendMessageButton_Click_2"/>
+            <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="4,0,0,16" VerticalAlignment="Bottom" />
+            <TextBox x:Name="messageText_2" Height="23" HorizontalAlignment="Left" Margin="62,0,0,18" VerticalAlignment="Bottom" Width="273" />
+            <Button x:Name="sendMessageButton_2" Content="►" Height="23" HorizontalAlignment="Right" Margin="0,0,0,18" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Bottom" Width="25" Click="sendMessageButton_Click_2"/>
         </Grid>
     </Grid>
 </Page>

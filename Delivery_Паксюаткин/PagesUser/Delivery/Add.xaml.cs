@@ -33,6 +33,19 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
                 userId.Text = loggedInUser.FIO;
                 userId.IsReadOnly = true;
             }
+            if (delivery.Status == "Доставлено")
+            {
+                commit.IsEnabled = true;
+
+                objectId.IsEnabled = false;
+                fromAddress.IsEnabled = false;
+                price.IsEnabled = false;
+            }
+            if (delivery.Status == "Ожидает доставки")
+            {
+                commit.IsEnabled = false;
+            }
+
 
             if (delivery != null)
             {
@@ -54,9 +67,9 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
 
         private void AddRecord(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(fromAddress.Text) || string.IsNullOrWhiteSpace(commit.Text) || string.IsNullOrWhiteSpace(price.Text) || objectId.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(fromAddress.Text) || string.IsNullOrWhiteSpace(price.Text) || objectId.SelectedItem == null)
             {
-                MessageBox.Show("Пожалуйста, заполните все поля (кроме Курьера).");
+                MessageBox.Show("Пожалуйста, заполните все поля.");
                 return;
             }
 

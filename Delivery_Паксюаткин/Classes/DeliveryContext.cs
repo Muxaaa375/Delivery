@@ -1,5 +1,4 @@
-﻿using Delivery_Паксюаткин.Classes.Common;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System;
 
@@ -21,7 +20,7 @@ namespace Delivery_Паксюаткин.Classes
                 AllDelivery.Add(new DeliveryContext(
                     Data.GetInt32(0),
                     Data.GetInt32(1),
-                    Data.IsDBNull(2) ? (int?)null : Data.GetInt32(2), // Проверка на null
+                    Data.IsDBNull(2) ? (int?)null : Data.GetInt32(2),
                     Data.GetInt32(3),
                     Data.GetString(4),
                     Data.GetString(5),

@@ -54,14 +54,17 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
                 btnDeleteRecord.IsEnabled = false;
                 btnChatRecord.IsEnabled = false;
                 btnEditRedord.IsEnabled = false;
+                btnCommRedord.IsEnabled = true;
             }
             if (delivery.Status == "Ожидает доставки")
             {
                 btnChatRecord.IsEnabled = false;
+                btnCommRedord.IsEnabled = false;
             }
             if (delivery.Status == "У курьера")
             {
                 btnEditRedord.IsEnabled = false;
+                btnCommRedord.IsEnabled = false;
             }
 
             this.delivery = delivery;
@@ -129,6 +132,11 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
             {
                 MainWindow.init.OpenPage(new PagesUser.Delivery.Add(this.delivery));
             }
+        }
+
+        private void CommRecord(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPage(new PagesUser.Delivery.Add(this.delivery));
         }
     }        
 }

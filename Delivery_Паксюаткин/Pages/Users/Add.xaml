@@ -30,9 +30,9 @@
             <Label Content="Роль: *" Grid.Column="2" VerticalAlignment="Top" Margin="10,108,10,0"/>
             <ComboBox x:Name="role" Height="25" Grid.Column="2" Margin="10,134,10,0" VerticalAlignment="Top"/>
             <Button x:Name="bthAdd" Click="AddRecord" Height="25" Grid.Column="2" Margin="0,164,10,0" HorizontalAlignment="Right" Width="100" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
-            <Label Content="Номер телефона: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,194,10,0"/>
 
-            <TextBox x:Name="phoneNumber" Height="26" Grid.Column="1" Margin="10,220,10,0" VerticalAlignment="Top" />
+            <Label Content="Номер телефона: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,194,10,0"/>
+            <TextBox x:Name="phoneNumber" PreviewTextInput="PhoneNumber_PreviewTextInput" TextChanged="PhoneNumber_TextChanged" Height="26" Grid.Column="1" Margin="10,220,10,0" VerticalAlignment="Top" />
             
             <Button Click="Exit" Content="Назад" Height="25" Grid.Column="2" Margin="0,164,115,0" HorizontalAlignment="Right" Width="100" Background="#FFE63418" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
             <TextBlock x:Name="imagePathText" Height="25" Grid.Column="1" Margin="10,164,10,0" VerticalAlignment="Top"/>

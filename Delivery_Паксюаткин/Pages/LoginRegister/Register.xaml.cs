@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,6 +40,35 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
             }
         }
 
+        private void PhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private void PhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string text = textBox.Text;
+
+            if (!text.StartsWith("+7"))
+            {
+                textBox.Text = "+7";
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+
+            if (text.Length > 12)
+            {
+                textBox.Text = text.Substring(0, 12);
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9]+"); // Разрешаем только цифры
+            return !regex.IsMatch(text);
+        }
+
         private void OpenRegister(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(fio.Text))
@@ -66,6 +96,13 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
                 MessageBox.Show("Необходимо указать роль");
                 return;
             }
+            // Проверка на допустимые значения роли
+            int selectedRoleId = AllRoles.Find(x => x.Role == role.SelectedItem.ToString()).Id;
+            if (selectedRoleId != 1 && selectedRoleId != 2)
+            {
+                MessageBox.Show("Выбранная роль для вас недоступна. Пожалуйста, выберите роль Пользователь или Курьер.");
+                return;
+            }
 
             if (userContext == null)
             {
@@ -81,22 +118,7 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
                 );
                 userContext.Add();
                 MessageBox.Show("Регистрация успешно завершена.");
-            }
-            else
-            {
-                userContext = new UsersContext(
-                    userContext.Id,
-                    fio.Text,
-                    null,
-                    phoneNumber.Text,
-                    null,
-                    AllRoles.Find(x => x.Role == role.SelectedItem.ToString()).Id,
-                    login.Text,
-                    pwd.Text
-                );
-                userContext.Update();
-                MessageBox.Show("Запись успешно обновлена.");
-            }
+            }           
             MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
         }
 

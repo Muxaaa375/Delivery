@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Delivery_Паксюаткин.Classes;
 using Microsoft.Win32;
@@ -45,6 +47,35 @@ namespace Delivery_Паксюаткин.Pages.ObjectDelivery
             status.Items.Add("Доставлено");
         }
 
+        private void PhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private void PhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string text = textBox.Text;
+
+            if (!text.StartsWith("+7"))
+            {
+                textBox.Text = "+7";
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+
+            if (text.Length > 12)
+            {
+                textBox.Text = text.Substring(0, 12);
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9]+"); // Разрешаем только цифры
+            return !regex.IsMatch(text);
+        }
+
         private void UploadImage(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -69,7 +100,7 @@ namespace Delivery_Паксюаткин.Pages.ObjectDelivery
                 // Копирование файла в папку Image
                 File.Copy(sourcePath, destinationPath, true);
 
-                // Сохраняем относительный путь для базы данных
+                // Сохраняю относительный путь для базы данных
                 imagePath = Path.Combine("Image", fileName).Replace("\\", "/");
 
                 imagePathText.Text = imagePath;

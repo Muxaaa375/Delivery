@@ -23,22 +23,22 @@
 
             <Label Content="Статус: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,108,10,0"/>
             <ComboBox x:Name="status" Height="25" Grid.Column="1" Margin="10,134,10,0" VerticalAlignment="Top"/>
-            <Label Content="Комментарий:" Grid.Column="2" VerticalAlignment="Top" Margin="10,57,10,0"/>
-            <TextBox x:Name="commit" Grid.Column="2" Margin="10,83,15,0" Height="25" VerticalAlignment="Top"/>
-            <Button x:Name="bthAdd" Click="AddRecord" Height="25" Grid.Column="2" Margin="0,269,12,0" HorizontalAlignment="Right" Width="100" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
-            <Button Click="Exit" Content="Назад" Height="25" Grid.Column="2" Margin="0,269,120,0" HorizontalAlignment="Right" Width="100" Background="#FFE63418" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
+            <Label Content="Комментарий:" Grid.Column="1" VerticalAlignment="Top" Margin="10,264,10,0"/>
+            <TextBox x:Name="commit" Grid.Column="1" Margin="10,290,15,0" Height="26" VerticalAlignment="Top"/>
+            <Button x:Name="bthAdd" Click="AddRecord" Height="25" Grid.Column="2" Margin="0,370,13,0" HorizontalAlignment="Right" Width="100" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
+            <Button Click="Exit" Content="Назад" Height="25" Grid.Column="2" Margin="0,370,121,0" HorizontalAlignment="Right" Width="100" Background="#FFE63418" BorderBrush="#FFE20707" Foreground="White" VerticalAlignment="Top"/>
             <Label Content="Заказчик: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,160,10,0"/>
             <ComboBox x:Name="userId" Height="26" Grid.Column="1" Margin="10,186,10,0" VerticalAlignment="Top"/>
             <Label Content="Курьер: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,212,10,0"/>
             <ComboBox x:Name="deliveryId" Height="26" Grid.Column="1" Margin="10,238,10,0" VerticalAlignment="Top"/>
-            <Label Content="Дата создания:" Grid.Column="2" VerticalAlignment="Top" Margin="10,160,13,0"/>
-            <TextBox x:Name="date" Grid.Column="2" Margin="10,186,15,0" Height="25" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Content="Дата создания:" Grid.Column="2" VerticalAlignment="Top" Margin="12,82,11,0"/>
+            <TextBox x:Name="date" Grid.Column="2" Margin="12,108,13,0" Height="25" VerticalAlignment="Top" IsReadOnly="True"/>
 
-            <Label Content="Объект доставки: *" Grid.Column="2" VerticalAlignment="Top" Margin="10,212,13,0"/>
-            <ComboBox x:Name="objectId" Height="26" Grid.Column="2" Margin="8,238,15,0" VerticalAlignment="Top"/>
-            <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="10,269,130,0" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" FontSize="10" />
-            <Label Content="Стоимость:" Grid.Column="2" VerticalAlignment="Top" Margin="13,107,15,0"/>
-            <TextBox x:Name="price" Height="26" Grid.Column="2" Margin="10,133,15,0" VerticalAlignment="Top"/>
+            <Label Content="Объект доставки: *" Grid.Column="2" VerticalAlignment="Top" Margin="12,134,11,0"/>
+            <ListBox x:Name="objectId" Height="205" Grid.Column="2" Margin="10,160,13,0" VerticalAlignment="Top" SelectionMode="Multiple"/>
+            <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="0,371,140,0" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" FontSize="10" />
+            <Label Content="Стоимость:" Grid.Column="1" VerticalAlignment="Top" Margin="13,314,15,0"/>
+            <TextBox x:Name="price" Height="26" Grid.Column="1" Margin="10,340,15,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>
