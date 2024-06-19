@@ -4,11 +4,18 @@ using System;
 
 namespace Delivery_Паксюаткин.Classes
 {
+
     public class DeliveryContext : Model.Delivery
     {
+        /// <summary>
+        /// Метод класса Доставки(Delivery)
+        /// </summary>
         public DeliveryContext(int Id, int UserId, int? DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
             : base(Id, UserId, DeliveryId, IdObject, FromAddress, Status, Commit, Price, Date) { }
-
+              
+        /// <summary>
+        /// Метод вывода таблицы Доставки(Delivery)
+        /// </summary>
         public static List<DeliveryContext> Select()
         {
             List<DeliveryContext> AllDelivery = new List<DeliveryContext>();
@@ -32,7 +39,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
             return AllDelivery;
         }
-
+        /// <summary>
+        /// Метод добавления Доставки(Delivery)
+        /// </summary>
         public void Add()
         {
             string SQL = "INSERT INTO " +
@@ -58,7 +67,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.Query(SQL, connection);
             Connection.CloseConnection(connection);
         }
-
+        /// <summary>
+        /// Метод изменения Доставки(Delivery)
+        /// </summary>
         public void Update()
         {
             string SQL = "UPDATE " +
@@ -79,6 +90,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
         }
 
+        /// <summary>
+        /// Метод удаления Доставки(Delivery)
+        /// </summary>
         public void Delete()
         {
             string SQL = $"DELETE FROM `delivery` WHERE `Id` = '{this.Id}'";

@@ -7,9 +7,15 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class UsersContext : Users
     {
-        public UsersContext(int Id, string FIO, byte[] Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
+        /// <summary>
+        /// Метод класса Пользователей(Users)
+        /// </summary>
+        public UsersContext(int Id, string FIO, byte[] Image, string PhoneNumber, 
+            string Address, int IdRole, string Login, string Password)
             : base(Id, FIO, Image, PhoneNumber, Address, IdRole, Login, Password) { }
-
+        /// <summary>
+        /// Метод вывода таблицы Пользователей(Users)
+        /// </summary>
         public static List<UsersContext> Select()
         {
             List<UsersContext> AllUsers = new List<UsersContext>();
@@ -32,7 +38,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
             return AllUsers;
         }
-
+        /// <summary>
+        /// Метод добавления Пользователей(Users)
+        /// </summary>
         public void Add()
         {
             string SQL = "INSERT INTO " +
@@ -58,7 +66,9 @@ namespace Delivery_Паксюаткин.Classes
             command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
-
+        /// <summary>
+        /// Метод изменения Пользователей(Users)
+        /// </summary>
         public void Update()
         {
             string SQL = "UPDATE " +
@@ -80,6 +90,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
         }
 
+        /// <summary>
+        /// Метод удаления Пользователей(Users)
+        /// </summary>
         public void Delete()
         {
             string SQL = $"DELETE FROM `users` WHERE `Id` = '{this.Id}'";

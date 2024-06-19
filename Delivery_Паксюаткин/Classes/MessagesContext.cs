@@ -12,13 +12,19 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class MessagesContext : Messages
     {
-        public MessagesContext(int Id, int IdDelivery, int SenderId, int GetId, string Message, byte[] ImagePath, DateTime DateTime)
+        /// <summary>
+        /// Метод класса Сообщения(Messages)
+        /// </summary>
+        public MessagesContext(int Id, int IdDelivery, int SenderId, int GetId,
+            string Message, byte[] ImagePath, DateTime DateTime)
             : base(Id, IdDelivery, SenderId, GetId, Message, ImagePath, DateTime) { }
-
+        /// <summary>
+        /// Метод вывода таблицы Сообщения(Messages)
+        /// </summary>
         public static List<Messages> Select()
         {
             List<Messages> allMessages = new List<Messages>();
-            string SQL = "SELECT Id, IdDelivery, SenderId, ReceiverId, MessageText, ImagePath, DateTime FROM messages"; // Исправлено на ImagePath
+            string SQL = "SELECT Id, IdDelivery, SenderId, ReceiverId, MessageText, ImagePath, DateTime FROM messages"; 
             MySqlConnection connection = Connection.OpenConnection();
 
             using (MySqlDataReader data = Connection.Query(SQL, connection))
@@ -28,7 +34,7 @@ namespace Delivery_Паксюаткин.Classes
                     byte[] imagePath = null;
                     if (!(data["ImagePath"] is DBNull))
                     {
-                        long bytes = data.GetBytes(data.GetOrdinal("ImagePath"), 0, null, 0, 0); // Использование GetOrdinal для получения индекса столбца
+                        long bytes = data.GetBytes(data.GetOrdinal("ImagePath"), 0, null, 0, 0); 
                         imagePath = new byte[bytes];
                         data.GetBytes(data.GetOrdinal("ImagePath"), 0, imagePath, 0, (int)bytes);
                     }
@@ -48,7 +54,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
             return allMessages;
         }
-
+        /// <summary>
+        /// Метод добавления Сообщения(Messages)
+        /// </summary>
         public static void Add(Messages message)
         {
             string SQL = $"INSERT INTO `messages` (`IdDelivery`, `SenderId`, `ReceiverId`, `MessageText`, `ImagePath`, `DateTime`) " +

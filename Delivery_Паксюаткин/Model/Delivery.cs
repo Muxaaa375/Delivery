@@ -19,8 +19,11 @@ namespace Delivery_Паксюаткин.Model
         public string Status { get; set; } 
         public string Commit { get; set; } 
         public int Price { get; set; } 
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; }
 
+        /// <summary>
+        /// Конструкор класса Доставка(Delivery)
+        /// </summary>
         public Delivery(int Id, int UserId, int? DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
         {
             this.Id = Id;

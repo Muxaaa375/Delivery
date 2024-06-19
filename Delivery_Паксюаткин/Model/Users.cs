@@ -20,6 +20,9 @@ namespace Delivery_Паксюаткин.Model
         public string Login { get; set; }
         public string Password { get; set; }
 
+        /// <summary>
+        /// Конструкор класса Пользователей(Users)
+        /// </summary>
         public Users(int Id, string FIO, byte[] Image, string PhoneNumber, string Address, int IdRole, string Login, string Password)
         {
             this.Id = Id;

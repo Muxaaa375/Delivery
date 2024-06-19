@@ -21,6 +21,9 @@ namespace Delivery_Паксюаткин.Model
         public byte[] ImagePath { get; set; } 
         public DateTime DateTime { get; set; }
 
+        /// <summary>
+        /// Конструкор класса Сообщения(Messages)
+        /// </summary>
         public Messages(int id, int idDelivery, int senderId, int receiverId, string messageText, byte[] imagePath, DateTime dateTime)
         {
             Id = id;
@@ -31,7 +34,9 @@ namespace Delivery_Паксюаткин.Model
             ImagePath = imagePath;
             DateTime = dateTime;
         }
-
+        /// <summary>
+        /// Метод удаления Сообщения(Messages)
+        /// </summary>
         public void Delete()
         {
             string SQL = $"DELETE FROM `messages` WHERE `Id` = {Id}";

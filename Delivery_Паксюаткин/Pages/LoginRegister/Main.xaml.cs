@@ -20,10 +20,8 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
         {
             string inputLogin = login.Text;
             string inputPassword = pwd.Password;
-
-            // Проверка логина и пароля (примерный код)
-            UsersContext user = ValidateUser(inputLogin, inputPassword); // Ваш метод проверки пользователя
-
+           
+            UsersContext user = ValidateUser(inputLogin, inputPassword); 
 
             if (string.IsNullOrWhiteSpace(inputLogin))
             {
@@ -35,7 +33,6 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
                 MessageBox.Show("Необходимо указать пароль");
                 return;
             }
-
             if (user != null)
             {
                 App.CurrentUser = user;

@@ -11,8 +11,15 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class ObjectDeliveryContext : ObjectDelivery
     {
-        public ObjectDeliveryContext(int Id, int IdDelivery, byte[] Image, int Weight, string Commit, string GetNumber, string Address, string Status) : base(Id, IdDelivery, Image, Weight, Commit, GetNumber, Address, Status) { }
-
+        /// <summary>
+        /// Метод класса Объекта доставки(ObjectDelivery)
+        /// </summary>
+        public ObjectDeliveryContext(int Id, int IdDelivery, byte[] Image, int Weight,
+            string Commit, string GetNumber, string Address, string Status)
+            : base(Id, IdDelivery, Image, Weight, Commit, GetNumber, Address, Status) { }
+        /// <summary>
+        /// Метод вывода таблицы Объекта доставки(ObjectDelivery)
+        /// </summary>
         public static List<ObjectDeliveryContext> Select()
         {
             List<ObjectDeliveryContext> AllObjectDelivery = new List<ObjectDeliveryContext>();
@@ -35,7 +42,9 @@ namespace Delivery_Паксюаткин.Classes
             Connection.CloseConnection(connection);
             return AllObjectDelivery;
         }
-
+        /// <summary>
+        /// Метод добавления Объекта доставки(ObjectDelivery)
+        /// </summary>
         public void Add()
         {
             string SQL = "INSERT INTO " +
@@ -61,7 +70,9 @@ namespace Delivery_Паксюаткин.Classes
             command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
-
+        /// <summary>
+        /// Метод изменения Объекта доставки(ObjectDelivery)
+        /// </summary>
         public void Update()
         {
             string SQL = "UPDATE " +
@@ -82,6 +93,9 @@ namespace Delivery_Паксюаткин.Classes
             command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
+        /// <summary>
+        /// Метод удаления Объекта доставки(ObjectDelivery)
+        /// </summary>
         public void Delete()
         {
             string SQL = $"DELETE FROM `object_delivery` WHERE `Id` = {this.Id}";

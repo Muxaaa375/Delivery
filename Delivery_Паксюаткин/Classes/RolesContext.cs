@@ -11,8 +11,13 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class RolesContext : Roles
     {
+        /// <summary>
+        /// Метод класса Роли(Roles)
+        /// </summary>
         public RolesContext(int Id, string IdRole) : base(Id, IdRole) { }
-
+        /// <summary>
+        /// Метод вывода  Роли(Roles)
+        /// </summary>
         public static List<RolesContext> Select()
         {
             List<RolesContext> AllRoles = new List<RolesContext>();

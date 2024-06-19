@@ -18,7 +18,11 @@ namespace Delivery_Паксюаткин.Model
         public string Commit { get; set; } 
         public string GetNumber { get; set; } 
         public string Address { get; set; } 
-        public string Status { get; set; } 
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Конструкор класса Объект доставки(ObjectDelivery)
+        /// </summary>
         public ObjectDelivery(int Id, int IdDelivery, byte[] Image, int Weight, string Commit, string GetNumber, string Address, string Status)
         {
             this.Id = Id;

@@ -34,9 +34,7 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj
             {
                 if (item.Status == "У курьера")
                 {
-                    // Пример выбора ObjectDeliveryContext для доставки item
                     ObjectDeliveryContext objDelivery = ObjectDeliveryContext.Select().FirstOrDefault(o => o.Id == item.IdObject);
-
                     parent.Children.Add(new Items.Item(item, null, this, objDelivery));
                 }
             }

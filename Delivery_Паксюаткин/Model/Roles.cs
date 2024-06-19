@@ -12,7 +12,11 @@ namespace Delivery_Паксюаткин.Model
         /// Код класса Ролей(Roles)
         /// </summary>
         public int Id { get; set; } 
-        public string Role { get; set; } 
+        public string Role { get; set; }
+
+        /// <summary>
+        /// Конструкор класса Ролей(Roles)
+        /// </summary>
         public Roles(int Id, string Role)
         {
             this.Id = Id;

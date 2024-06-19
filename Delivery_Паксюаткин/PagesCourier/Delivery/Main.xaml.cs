@@ -36,8 +36,7 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
                 if (item.Status == "Ожидает доставки")
                 {
                     if (item.DeliveryId == null)
-                    {
-                        // Пример выбора ObjectDeliveryContext для доставки item
+                    {                      
                         ObjectDeliveryContext objDelivery = ObjectDeliveryContext.Select().FirstOrDefault(o => o.Id == item.IdObject);
 
                         parent.Children.Add(new Items.Item(item, null, this, objDelivery));
@@ -45,12 +44,11 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
                 }
             }
         }
-
         private void DisplayLoggedInUserLogin()
         {
             if (loggedInUser != null)
             {
-                login.Text = loggedInUser.Login; // Отображаем логин текущего пользователя
+                login.Text = loggedInUser.Login; 
             }
             else
             {
@@ -60,7 +58,7 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
 
         private void OpenDelivery(object sender, RoutedEventArgs e)
         {
-            // Обработчик открытия страницы с доступными заказами
+            
         }
 
         private void Exit(object sender, RoutedEventArgs e)

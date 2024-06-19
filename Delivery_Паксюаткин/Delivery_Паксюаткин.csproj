@@ -157,6 +157,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PagesCourier\ObjectDelivery\Ob.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesUser\Delivery\Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +271,9 @@
     </Compile>
     <Compile Include="PagesCourier\ObjectDelivery\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesCourier\ObjectDelivery\Ob.xaml.cs">
+      <DependentUpon>Ob.xaml</DependentUpon>
     </Compile>
     <Compile Include="PagesUser\Delivery\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>

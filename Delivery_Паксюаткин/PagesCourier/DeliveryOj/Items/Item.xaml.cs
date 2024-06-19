@@ -31,14 +31,9 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
         {
             InitializeComponent();
             loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
-
             AllUsers = UsersContext.Select();
-
-
             var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
             var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
-
-
             if (courier != null)
                 deliveryId.Text = loggedInUser.FIO;
             else
@@ -48,16 +43,13 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
                 userId.Text = customer.FIO;
             else
                 userId.Text = customer.FIO;
-
             fromAddress.Text = delivery.FromAddress;
             status.Text = delivery.Status;
             commit.Text = delivery.Commit;
             price.Text = delivery.Price.ToString();
             date.Text = delivery.Date.ToString("dd.MM.yyyy HH:mm");
             objectId.Text = delivery.IdObject.ToString();
-            objectId.Text = AllObjects.Find(x => x.Id == delivery.IdObject).Commit;
-
-            
+            objectId.Text = AllObjects.Find(x => x.Id == delivery.IdObject).Commit;          
             if (objectDelivery != null && objectDelivery.Status == "Доставлено")
             {
                 btnDo.IsEnabled = true;
@@ -66,7 +58,6 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj.Items
             {
                 btnDo.IsEnabled = false;
             }
-
             this.delivery = delivery;
             this.user = user;
             this.main = main;

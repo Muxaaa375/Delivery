@@ -16,24 +16,17 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
         List<ObjectDeliveryContext> AllObjDel = ObjectDeliveryContext.Select();
         private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
         private ObjectDeliveryContext objectDelivery;
-
         public Item(DeliveryContext delivery, UsersContext user, Main main, ObjectDeliveryContext objectDelivery)
         {
             InitializeComponent();
             loggedInUser = App.CurrentUser; // Получаем текущего пользователя из класса App
-
             AllUsers = UsersContext.Select();
-
-
             var courier = AllUsers.Find(x => x.Id == delivery.DeliveryId && x.IdRole == 2);
             var customer = AllUsers.Find(x => x.Id == delivery.UserId && x.IdRole == 1);
-
-
             if (courier != null)
                 deliveryId.Text = courier.FIO;
             if (customer != null)
                 userId.Text = customer.FIO;
-
             fromAddress.Text = delivery.FromAddress;
             status.Text = delivery.Status;
             commit.Text = delivery.Commit;
@@ -41,13 +34,11 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
             date.Text = delivery.Date.ToString("dd.MM.yyyy HH:mm");
             objectId.Text = delivery.IdObject.ToString();
             objectId.Text = AllObjDel.Find(x => x.Id == delivery.IdObject).Commit;
-
             this.delivery = delivery;
             this.user = user;
             this.main = main;
             this.objectDelivery = objectDelivery;
         }
-
         private void DoRecord(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите принять заказ?", "Подтверждение заказа", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -57,15 +48,13 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
                 delivery.Update();
                 status.Text = "У курьера";
                 deliveryId.Text = loggedInUser.FIO;
-
-
                 MessageBox.Show("Заказ успешно принят.");
             }           
         }
 
         private void DoObRecord(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Add(this.objectDelivery));
+            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Ob(this.objectDelivery));
         }
     }
 }

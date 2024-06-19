@@ -74,7 +74,8 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery.Items
 
         private void DeleteRecord(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите отменить заказ?", "Подтверждение отмены заказа", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите отменить заказ?", 
+                "Подтверждение отмены заказа", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 delivery.Delete();
                 main.parent.Children.Remove(this);
