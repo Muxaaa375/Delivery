@@ -11,7 +11,7 @@ namespace Delivery_Паксюаткин.Classes
 {
     public class ObjectDeliveryContext : ObjectDelivery
     {
-        public ObjectDeliveryContext(int Id, int IdDelivery, string Image, int Weight, string Commit, string GetNumber, string Address, string Status) : base(Id, IdDelivery, Image, Weight, Commit, GetNumber, Address, Status) { }
+        public ObjectDeliveryContext(int Id, int IdDelivery, byte[] Image, int Weight, string Commit, string GetNumber, string Address, string Status) : base(Id, IdDelivery, Image, Weight, Commit, GetNumber, Address, Status) { }
 
         public static List<ObjectDeliveryContext> Select()
         {
@@ -24,7 +24,7 @@ namespace Delivery_Паксюаткин.Classes
                 AllObjectDelivery.Add(new ObjectDeliveryContext(
                     Data.GetInt32(0),
                     Data.GetInt32(1),
-                    Data.GetString(2),
+                    Data.IsDBNull(2) ? null : (byte[])Data["Image"],
                     Data.GetInt32(3),
                     Data.GetString(4),
                     Data.GetString(5),
@@ -49,14 +49,16 @@ namespace Delivery_Паксюаткин.Classes
                                 "`Status`) " +
                            "VALUES (" +
                                 $"'{this.IdDelivery}', " +
-                                $"'{this.Image}', " +
+                                $"@image, " +
                                 $"'{this.Weight}', " +
                                 $"'{this.Commit}', " +
                                 $"'{this.GetNumber}', " +
                                 $"'{this.Address}', " +
                                 $"'{this.Status}')";
             MySqlConnection connection = Connection.OpenConnection();
-            Connection.Query(SQL, connection);
+            MySqlCommand command = new MySqlCommand(SQL, connection);
+            command.Parameters.AddWithValue("@image", this.Image);
+            command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
 
@@ -66,7 +68,7 @@ namespace Delivery_Паксюаткин.Classes
                             "`object_delivery` " +
                          "SET " +
                             $"`IdDelivery`='{this.IdDelivery}', " +
-                            $"`Image`='{this.Image}', " +
+                            $"`Image`=@image, " +
                             $"`Weight`='{this.Weight}', " +
                             $"`Commit`='{this.Commit}', " +
                             $"`GetNumber`='{this.GetNumber}', " +
@@ -75,7 +77,9 @@ namespace Delivery_Паксюаткин.Classes
                          "WHERE " +
                             $"`Id`='{this.Id}'";
             MySqlConnection connection = Connection.OpenConnection();
-            Connection.Query(SQL, connection);
+            MySqlCommand command = new MySqlCommand(SQL, connection);
+            command.Parameters.AddWithValue("@image", this.Image);
+            command.ExecuteNonQuery();
             Connection.CloseConnection(connection);
         }
         public void Delete()

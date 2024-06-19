@@ -37,7 +37,7 @@
             <Label Content="* - поля, обязательные для заполнения" Grid.Column="1" Margin="0,294,140,0" RenderTransformOrigin="0.5,0.5" Height="24"  VerticalAlignment="Top" FontSize="10" />
 
         </Grid>
-        <Label Content="Фото:" VerticalAlignment="Top" Margin="130,181,360,0" Height="25"/>
+        <Label Content="Фото: (.jpg .jpeg .png)" VerticalAlignment="Top" Margin="130,180,360,0" Height="26"/>
 
         <TextBlock x:Name="imagePathText" Height="25" Margin="130,232,360,0" VerticalAlignment="Top"/>
     </Grid>

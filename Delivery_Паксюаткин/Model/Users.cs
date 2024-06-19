@@ -8,9 +8,12 @@ namespace Delivery_Паксюаткин.Model
 {
     public class Users
     {
+        /// <summary>
+        /// Код класса Пользователей(Users)
+        /// </summary>
         public int Id { get; set; }
         public string FIO { get; set; }
-        public byte[] Image { get; set; } // Фотография
+        public byte[] Image { get; set; } 
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int IdRole { get; set; }

@@ -1,6 +1,8 @@
 ﻿using Delivery_Паксюаткин.Classes;
+using Delivery_Паксюаткин.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +27,7 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery.Items
         {
             InitializeComponent();
             idDelivery.Text = objectDelivery.IdDelivery.ToString();
-            weight.Text = objectDelivery.Weight.ToString();
-            image.Text = objectDelivery.Image;
+            weight.Text = objectDelivery.Weight.ToString();            
             commit.Text = objectDelivery.Commit;
             address.Text = objectDelivery.Address;
             getNumber.Text = objectDelivery.GetNumber;
@@ -35,28 +36,21 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery.Items
             this.objectDelivery = objectDelivery;
             this.main = main;
 
-            // Load the image into the Image control
             LoadImage(objectDelivery.Image);
         }
 
-        private void LoadImage(string imagePath)
+        private void LoadImage(byte[] imageData)
         {
-            if (!string.IsNullOrEmpty(imagePath))
+            if (imageData != null)
             {
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string absolutePath = System.IO.Path.Combine(projectDirectory, imagePath.Replace("/", "\\"));
-                if (System.IO.File.Exists(absolutePath))
+                using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(absolutePath, UriKind.Absolute);
+                    bitmap.StreamSource = ms;
                     bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
-                    var imageControl = (Image)this.FindName("imageControl");
-                    if (imageControl != null)
-                    {
-                        imageControl.Source = bitmap;
-                    }
+                    imageControl.Source = bitmap;
                 }
             }
         }

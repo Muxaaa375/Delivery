@@ -33,7 +33,7 @@
             <Button Click="ChatRecord" Content="Чат с отправителем" Height="25" Margin="10,142,0,0" HorizontalAlignment="Center" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="9"/>
             <Label Content="Стоимость:" Grid.Column="3" VerticalAlignment="Top" Margin="11,115,9,0"/>
             <TextBox x:Name="price" Height="26" Grid.Column="3" Margin="10,141,9,0" VerticalAlignment="Top" IsEnabled="False"/>
-            <Button Click="ObRecord" Content="Объекты доставки" Height="25" Margin="10,172,0,0" HorizontalAlignment="Left" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="9"/>
+            <Button Click="ObRecord" Content="Объект доставки" Height="25" Margin="10,172,0,0" HorizontalAlignment="Left" Width="90" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top" FontSize="9"/>
 
         </Grid>
     </Grid>

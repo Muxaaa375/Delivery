@@ -17,15 +17,8 @@ namespace Delivery_Паксюаткин.Pages.ObjectDelivery
                 parent.Children.Add(new Items.Item(item, this));
             }
         }
-        private void OpenUsers(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.Users.Main());
-
-        private void OpenObjectDelivery(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.ObjectDelivery.Main());
-
-        private void OpenDelivery(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.Delivery.Main());
-
-        private void OpenMessages(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.Messages.Main());
 
         private void AddRecord(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.ObjectDelivery.Add());
-        private void Exit(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
+        private void Exit(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new PagesUser.Delivery.Add());
     }
 }

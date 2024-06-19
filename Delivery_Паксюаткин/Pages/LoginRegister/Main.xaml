@@ -42,6 +42,5 @@
         </Grid>
         <Label Content="Курьер: c - c" Margin="10,456,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
         <Label Content="Пользователь: u - u" Margin="10,479,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
-        <Label Content="Админ: asd - asd" Margin="10,433,0,0" VerticalAlignment="Top" Width="175" FontSize="10" HorizontalAlignment="Left"/>
     </Grid>
 </Page>

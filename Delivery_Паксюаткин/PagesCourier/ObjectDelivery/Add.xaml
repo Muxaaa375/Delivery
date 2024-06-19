@@ -35,7 +35,7 @@
             <TextBox x:Name="IdDelivery" Height="26" Grid.Column="1" Margin="10,263,10,0" VerticalAlignment="Top" IsEnabled="False"/>
 
         </Grid>
-        <Label Content="Фото:" VerticalAlignment="Top" Margin="130,181,360,0" Height="25"/>
+        <Label Content="Фото: (*.jpg; *.jpeg; *.png)" VerticalAlignment="Top" Margin="130,179,360,0" Height="27"/>
         <Button Content="Загрузить фото" Click="UploadImage" Height="24" Margin="130,206,0,0" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Left" Width="310"/>
         <TextBlock x:Name="imagePathText" Height="25" Margin="130,232,360,0" VerticalAlignment="Top"/>
     </Grid>

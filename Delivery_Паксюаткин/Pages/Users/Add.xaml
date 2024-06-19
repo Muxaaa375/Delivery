@@ -15,13 +15,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Создание Пользователя" HorizontalAlignment="Left" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,287,353" Foreground="Black" Grid.ColumnSpan="3" Width="463" VerticalAlignment="Top"/>
+            <Label Content="Регистрация" HorizontalAlignment="Left" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Margin="10,5,287,353" Foreground="Black" Grid.ColumnSpan="3" Width="463" VerticalAlignment="Top"/>
 
             <Image Width="80" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,57,0,0" Source="/Image/user.png"/>
             <Label Content="ФИО: *" Grid.Column="1" VerticalAlignment="Top" Margin="10,57,10,0"/>
             <TextBox x:Name="fio" Height="25" Margin="10,83,10,0" VerticalAlignment="Top" Grid.Column="1"/>
 
-            <Label Content="Фото:" Grid.Column="1" VerticalAlignment="Top" Margin="10,108,10,0"/>
+            <Label Content="Фото: (*.jpg; *.jpeg; *.png)" Grid.Column="1" VerticalAlignment="Top" Margin="10,108,10,0"/>
             <Button Content="Загрузить фото" Click="UploadImage" Height="25" Grid.Column="1" Margin="10,134,10,0" VerticalAlignment="Top"/>
             <Image x:Name="imagePreview" Margin="12,62,12,0" VerticalAlignment="Top" Height="70" />
 

@@ -58,7 +58,6 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj
 
         private void OpenDelivery(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new PagesCourier.Delivery.Main());
 
-        private void OpenObjectDelivery(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Main());
 
         private void Exit(object sender, RoutedEventArgs e)
         {

@@ -91,7 +91,7 @@ namespace Delivery_Паксюаткин.Pages.LoginRegister
 
         private void OpenRegister(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/LoginRegister/Register.xaml", UriKind.Relative));
+            MainWindow.init.OpenPage(new Pages.Users.Add());
         }
     }
 }

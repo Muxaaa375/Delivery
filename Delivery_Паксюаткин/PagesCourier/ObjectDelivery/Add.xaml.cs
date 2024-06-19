@@ -12,7 +12,7 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
     public partial class Add : Page
     {
         ObjectDeliveryContext objectDeliveryContext;
-        private string imagePath;
+        private byte[] imageBytes;
 
         public Add(ObjectDeliveryContext objectDeliveryContext = null)
         {
@@ -22,7 +22,7 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
                 this.objectDeliveryContext = objectDeliveryContext;
                 IdDelivery.Text = objectDeliveryContext.IdDelivery.ToString();
                 weight.Text = objectDeliveryContext.Weight.ToString();
-                imagePath = objectDeliveryContext.Image;
+                
                 address.Text = objectDeliveryContext.Address;
                 getNumber.Text = objectDeliveryContext.GetNumber;
                 commit.Text = objectDeliveryContext.Commit;
@@ -30,11 +30,11 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
 
                 bthAdd.Content = "Изменить";
 
-                // Используем абсолютный путь для загрузки изображения
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string imagePathAbsolute = Path.Combine(projectDirectory, imagePath.Replace("/", "\\"));
-
-                LoadImage(imagePathAbsolute);
+                if (objectDeliveryContext.Image != null)
+                {
+                    imageBytes = objectDeliveryContext.Image;
+                    LoadImageFromBytes(objectDeliveryContext.Image);
+                }
             }
             else
             {
@@ -51,48 +51,32 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
             if (openFileDialog.ShowDialog() == true)
             {
-                string sourcePath = openFileDialog.FileName;
-                string fileName = Path.GetFileName(sourcePath);
-
-                // Путь к проекту относительно текущей рабочей директории
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string destinationDirectory = Path.Combine(projectDirectory, "Image");
-
-                if (!Directory.Exists(destinationDirectory))
+                string fileExtension = Path.GetExtension(openFileDialog.FileName).ToLower();
+                if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png")
                 {
-                    Directory.CreateDirectory(destinationDirectory);
-                    MessageBox.Show($"Создана директория: {destinationDirectory}");
+                    imageBytes = File.ReadAllBytes(openFileDialog.FileName);
+                    LoadImageFromBytes(imageBytes);
                 }
-
-                string destinationPath = Path.Combine(destinationDirectory, fileName);
-
-                // Копирование файла в папку Image
-                File.Copy(sourcePath, destinationPath, true);
-
-                // Сохраняем относительный путь для базы данных
-                imagePath = Path.Combine("Image", fileName).Replace("\\", "/");
-
-                imagePathText.Text = imagePath;
-                LoadImage(destinationPath);
+                else
+                {
+                    MessageBox.Show("Пожалуйста, выберите файл формата JPG, JPEG или PNG.", "Неподдерживаемый формат файла", MessageBoxButton.OK);
+                }
             }
         }
 
-        private void LoadImage(string path)
+        private void LoadImageFromBytes(byte[] imageData)
         {
-            if (!string.IsNullOrEmpty(path))
+            BitmapImage bitmap = new BitmapImage();
+            using (MemoryStream stream = new MemoryStream(imageData))
             {
-                string absolutePath = Path.GetFullPath(path);
-                if (File.Exists(absolutePath))
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(absolutePath, UriKind.Absolute);
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.EndInit();
-                    imagePreview.Source = bitmap;
-                }
+                bitmap.BeginInit();
+                bitmap.StreamSource = stream;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
             }
+            imagePreview.Source = bitmap;
         }
+
 
         private void AddRecord(object sender, RoutedEventArgs e)
         {
@@ -111,9 +95,9 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
                 MessageBox.Show("Необходимо указать адрес доставки");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(getNumber.Text))
+            if (string.IsNullOrWhiteSpace(getNumber.Text) || getNumber.Text.Length != 12)
             {
-                MessageBox.Show("Необходимо указать номер получателя");
+                MessageBox.Show("Необходимо указать номер получателя (12значный)");
                 return;
             }
             if (string.IsNullOrWhiteSpace(status.Text))
@@ -141,7 +125,7 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
                 ObjectDeliveryContext newObjectDelivery = new ObjectDeliveryContext(
                     0,
                     parsedIdDelivery,
-                    imagePath,
+                    imageBytes,
                     parsedWeight,
                     commit.Text,
                     getNumber.Text,
@@ -155,7 +139,7 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
             {
                 objectDeliveryContext.IdDelivery = parsedIdDelivery;
                 objectDeliveryContext.Weight = parsedWeight;
-                objectDeliveryContext.Image = imagePath;
+                objectDeliveryContext.Image = imageBytes;
                 objectDeliveryContext.Address = address.Text;
                 objectDeliveryContext.GetNumber = getNumber.Text;
                 objectDeliveryContext.Commit = commit.Text;
@@ -163,12 +147,12 @@ namespace Delivery_Паксюаткин.PagesCourier.ObjectDelivery
                 objectDeliveryContext.Update();
                 MessageBox.Show("Запись успешно обновлена.");
             }
-            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Main());
+            MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Main());
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Main());
+            MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Main());
         }
     }
 }

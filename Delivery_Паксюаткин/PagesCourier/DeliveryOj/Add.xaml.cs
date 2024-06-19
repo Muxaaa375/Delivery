@@ -117,31 +117,48 @@ namespace Delivery_Паксюаткин.PagesCourier.DeliveryOj
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourcePath = openFileDialog.FileName;
-                string fileName = Path.GetFileName(sourcePath);
+                string fileExtension = Path.GetExtension(sourcePath).ToLower();
 
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string destinationDirectory = Path.Combine(projectDirectory, "Image");
-
-                if (!Directory.Exists(destinationDirectory))
+                if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png")
                 {
-                    Directory.CreateDirectory(destinationDirectory);
+                    string fileName = Path.GetFileName(sourcePath);
+                    string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string destinationDirectory = Path.Combine(projectDirectory, "Image");
+
+                    if (!Directory.Exists(destinationDirectory))
+                    {
+                        Directory.CreateDirectory(destinationDirectory);
+                    }
+
+                    string destinationPath = Path.Combine(destinationDirectory, fileName);
+
+                    // Ограничиваем длину пути к файлу
+                    if (destinationPath.Length > 255)
+                    {
+                        MessageBox.Show("Путь к файлу слишком длинный. Пожалуйста, выберите другой файл или измените его расположение.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    File.Copy(sourcePath, destinationPath, true);
+
+                    byte[] imageData;
+                    using (FileStream fs = new FileStream(destinationPath, FileMode.Open, FileAccess.Read))
+                    {
+                        imageData = new byte[fs.Length];
+                        fs.Read(imageData, 0, imageData.Length);
+                    }
+
+                    Model.Messages newMessage = new Model.Messages(0, deliveryId, receiverId, courierId, null, imageData, DateTime.Now);
+                    MessagesContext.Add(newMessage);
+                    LoadMessages();
                 }
-
-                string destinationPath = Path.Combine(destinationDirectory, fileName);
-                File.Copy(sourcePath, destinationPath, true);
-
-                byte[] imageData;
-                using (FileStream fs = new FileStream(destinationPath, FileMode.Open, FileAccess.Read))
+                else
                 {
-                    imageData = new byte[fs.Length];
-                    fs.Read(imageData, 0, imageData.Length);
+                    MessageBox.Show("Пожалуйста, выберите файл формата JPG, JPEG или PNG.", "Неподдерживаемый формат файла", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
-                Model.Messages newMessage = new Model.Messages(0, deliveryId, receiverId, courierId, null, imageData, DateTime.Now);
-                MessagesContext.Add(newMessage);
-                LoadMessages();
             }
         }
+
 
     }
 }

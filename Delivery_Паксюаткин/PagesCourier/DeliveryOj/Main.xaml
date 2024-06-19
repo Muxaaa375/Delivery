@@ -11,7 +11,6 @@
         <Button Click="OpenDeliveryOj" Content="Ожидает доставки" Height="25" Margin="10,10,0,0" HorizontalAlignment="Left" Width="122" Background="#FF36DC26" BorderBrush="Red" Foreground="White" VerticalAlignment="Top"/>
         <Button Click="OpenDelivery" Content="Доступные заказы" Height="25" Margin="137,10,0,0" HorizontalAlignment="Left" Width="122" Background="#FF36DC26" BorderBrush="Black" Foreground="White" VerticalAlignment="Top"/>
         <Button Click="Exit" Content="Выйти" Height="25" Margin="712,10,10,0" HorizontalAlignment="Right" Width="78" Background="#FFDC2626" BorderBrush="Black" Foreground="White" VerticalAlignment="Top"/>
-        <Button Click="OpenObjectDelivery" Content="Доставки объектов" Height="25" Margin="264,10,0,0" HorizontalAlignment="Left" Width="122" Background="#FF36DC26" BorderBrush="Black" Foreground="White" VerticalAlignment="Top"/>
         <ScrollViewer Margin="0,40,18,0">
             <StackPanel x:Name="parent">
 

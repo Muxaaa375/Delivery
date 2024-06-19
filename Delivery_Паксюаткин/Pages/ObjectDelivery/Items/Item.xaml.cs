@@ -1,5 +1,6 @@
 ﻿using Delivery_Паксюаткин.Classes;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -16,7 +17,6 @@ namespace Delivery_Паксюаткин.Pages.ObjectDelivery.Items
             InitializeComponent();
             idDelivery.Text = objectDelivery.IdDelivery.ToString();
             weight.Text = objectDelivery.Weight.ToString();
-            image.Text = objectDelivery.Image;
             commit.Text = objectDelivery.Commit;
             address.Text = objectDelivery.Address;
             getNumber.Text = objectDelivery.GetNumber;
@@ -28,24 +28,18 @@ namespace Delivery_Паксюаткин.Pages.ObjectDelivery.Items
             LoadImage(objectDelivery.Image);
         }
 
-        private void LoadImage(string imagePath)
+        private void LoadImage(byte[] imageData)
         {
-            if (!string.IsNullOrEmpty(imagePath))
+            if (imageData != null)
             {
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string absolutePath = System.IO.Path.Combine(projectDirectory, imagePath.Replace("/", "\\"));
-                if (System.IO.File.Exists(absolutePath))
+                using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(absolutePath, UriKind.Absolute);
+                    bitmap.StreamSource = ms;
                     bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
-                    var imageControl = (Image)this.FindName("imageControl");
-                    if (imageControl != null)
-                    {
-                        imageControl.Source = bitmap;
-                    }
+                    imageControl.Source = bitmap;
                 }
             }
         }

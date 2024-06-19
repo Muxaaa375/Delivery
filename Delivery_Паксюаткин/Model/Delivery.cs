@@ -9,17 +9,17 @@ namespace Delivery_Паксюаткин.Model
     public class Delivery
     {
         /// <summary>
-        /// Код
+        /// Код класса Доставка(Delivery)
         /// </summary>
-        public int Id { get; set; } // Код
-        public int UserId { get; set; } // Код заказчика
-        public int? DeliveryId { get; set; } // Код курьера
-        public int IdObject { get; set; } // Код объекта
-        public string FromAddress { get; set; } // Адрес отправки
-        public string Status { get; set; } // Статус
-        public string Commit { get; set; } // Комментарий
-        public int Price { get; set; } // Стоимость
-        public DateTime Date { get; set; } // Дата и время
+        public int Id { get; set; } 
+        public int UserId { get; set; } 
+        public int? DeliveryId { get; set; } 
+        public int IdObject { get; set; } 
+        public string FromAddress { get; set; } 
+        public string Status { get; set; } 
+        public string Commit { get; set; } 
+        public int Price { get; set; } 
+        public DateTime Date { get; set; } 
 
         public Delivery(int Id, int UserId, int? DeliveryId, int IdObject, string FromAddress, string Status, string Commit, int Price, DateTime Date)
         {

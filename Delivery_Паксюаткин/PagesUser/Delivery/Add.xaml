@@ -37,8 +37,9 @@
             <Label Content="Объект доставки: " Grid.Column="2" VerticalAlignment="Top" Margin="10,212,13,0"/>
             <ListBox x:Name="objectId" Height="68" Grid.Column="2" Margin="8,238,15,0" VerticalAlignment="Top" SelectionMode="Multiple"/>
             <Label Content="Стоимость:" Grid.Column="2" VerticalAlignment="Top" Margin="13,107,15,0"/>
-            <TextBox x:Name="price" Height="26" Grid.Column="2" Margin="10,133,15,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="price" Height="26" Grid.Column="2" Margin="10,133,15,0" VerticalAlignment="Top" IsEnabled="False"/>
             <Button x:Name="bthAddOb" Click="AddObRecord" Content="Создать объект доставки" Height="24" Grid.Column="2" Margin="0,311,162,0" HorizontalAlignment="Left" Width="158" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
+            <Button x:Name="bthOb" Click="AddOb" Content="Все объекты доставки" Height="24" Grid.Column="2" Margin="0,340,0,0" HorizontalAlignment="Left" Width="158" Background="#FF73E618" BorderBrush="#FF41E207" Foreground="White" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>

@@ -8,8 +8,11 @@ namespace Delivery_Паксюаткин.Model
 {
     public class Roles
     {
-        public int Id { get; set; } // Код
-        public string Role { get; set; } // Роль
+        /// <summary>
+        /// Код класса Ролей(Roles)
+        /// </summary>
+        public int Id { get; set; } 
+        public string Role { get; set; } 
         public Roles(int Id, string Role)
         {
             this.Id = Id;

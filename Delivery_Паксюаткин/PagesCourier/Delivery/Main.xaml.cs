@@ -37,7 +37,10 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
                 {
                     if (item.DeliveryId == null)
                     {
-                        parent.Children.Add(new Items.Item(item, null, this, null));
+                        // Пример выбора ObjectDeliveryContext для доставки item
+                        ObjectDeliveryContext objDelivery = ObjectDeliveryContext.Select().FirstOrDefault(o => o.Id == item.IdObject);
+
+                        parent.Children.Add(new Items.Item(item, null, this, objDelivery));
                     }
                 }
             }
@@ -72,6 +75,5 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery
             MainWindow.init.OpenPage(new PagesCourier.DeliveryOj.Main());
         }
 
-        private void OpenObjectDelivery(object sender, RoutedEventArgs e) => MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Main());
     }
 }

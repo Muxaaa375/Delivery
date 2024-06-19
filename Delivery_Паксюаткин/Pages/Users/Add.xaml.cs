@@ -33,7 +33,7 @@ namespace Delivery_Паксюаткин.Pages.Users
                 role.SelectedIndex = AllRoles.FindIndex(x => x.Id == userContext.IdRole);
                 login.Text = userContext.Login;
                 pwd.Text = userContext.Password;
-                bthAdd.Content = "Изменить";
+                bthAdd.Content = "Регистрация";
 
                 if (userContext.Image != null)
                 {
@@ -43,7 +43,7 @@ namespace Delivery_Паксюаткин.Pages.Users
             }
             else
             {
-                bthAdd.Content = "Добавить";
+                bthAdd.Content = "Регистрация";
             }
         }
         private void PhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -81,8 +81,16 @@ namespace Delivery_Паксюаткин.Pages.Users
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
             if (openFileDialog.ShowDialog() == true)
             {
-                imageBytes = File.ReadAllBytes(openFileDialog.FileName);
-                LoadImageFromBytes(imageBytes);
+                string fileExtension = Path.GetExtension(openFileDialog.FileName).ToLower();
+                if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png")
+                {
+                    imageBytes = File.ReadAllBytes(openFileDialog.FileName);
+                    LoadImageFromBytes(imageBytes);
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, выберите файл формата JPG, JPEG или PNG.", "Неподдерживаемый формат файла", MessageBoxButton.OK);
+                }
             }
         }
 
@@ -106,14 +114,24 @@ namespace Delivery_Паксюаткин.Pages.Users
                 MessageBox.Show("Необходимо указать ФИО");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(phoneNumber.Text))
+            if (string.IsNullOrWhiteSpace(phoneNumber.Text) || phoneNumber.Text.Length != 12)
             {
-                MessageBox.Show("Необходимо указать номер телефона");
+                MessageBox.Show("Необходимо указать номер телефона (12значное)");
                 return;
             }
             if (string.IsNullOrWhiteSpace(role.Text))
             {
                 MessageBox.Show("Необходимо указать роль");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(login.Text))
+            {
+                MessageBox.Show("Необходимо указать логин");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(pwd.Text))
+            {
+                MessageBox.Show("Необходимо указать пароль");
                 return;
             }
 
@@ -147,12 +165,12 @@ namespace Delivery_Паксюаткин.Pages.Users
                 userContext.Update();
                 MessageBox.Show("Запись успешно обновлена.");
             }
-            MainWindow.init.OpenPage(new Pages.Users.Main());
+            MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.OpenPage(new Pages.Users.Main());
+            MainWindow.init.OpenPage(new Pages.LoginRegister.Main());
         }
     }
 }

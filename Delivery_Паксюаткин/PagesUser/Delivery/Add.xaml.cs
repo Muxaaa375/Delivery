@@ -14,7 +14,10 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
         List<ObjectDeliveryContext> AllObjects = ObjectDeliveryContext.Select();
         private DeliveryContext delivery;
         private UsersContext loggedInUser; // Поле для хранения информации о текущем пользователе
-
+        private int CalculatePrice()
+        {
+            return 1000 + 2 * 500;
+        }
         public Add(DeliveryContext delivery = null)
         {
             InitializeComponent();
@@ -67,6 +70,7 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
                 userId.Text = loggedInUser.FIO;
                 userId.IsReadOnly = true;
             }
+            price.Text = CalculatePrice().ToString();
         }
 
         private void AddRecord(object sender, RoutedEventArgs e)
@@ -77,7 +81,7 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
                 return;
             }
 
-            int priceValue = int.Parse(price.Text);
+            int priceValue = CalculatePrice();
             int userIdValue = loggedInUser.Id;
             int? deliveryIdValue = null; // Установите значение в null, если курьер не назначен
 
@@ -128,6 +132,11 @@ namespace Delivery_Паксюаткин.PagesUser.Delivery
         private void AddObRecord(object sender, RoutedEventArgs e)
         {
             MainWindow.init.OpenPage(new PagesUser.Delivery.ObjectDelivery());
+        }
+
+        private void AddOb(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPage(new Pages.ObjectDelivery.Main());
         }
     }
 }

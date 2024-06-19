@@ -65,7 +65,7 @@ namespace Delivery_Паксюаткин.PagesCourier.Delivery.Items
 
         private void DoObRecord(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.init.OpenPage(new PagesCourier.ObjectDelivery.Add(this.objectDelivery));
         }
     }
 }
